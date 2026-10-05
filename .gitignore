@@ -1,0 +1,5 @@
+# Release ZIPs live in GitHub Releases.
+*.zip
+*.log
+Thumbs.db
+.DS_Store
