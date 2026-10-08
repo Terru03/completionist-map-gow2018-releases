@@ -2,18 +2,19 @@
 
 PC mod for **God of War (2018)**. Adds collectible pins to world map and compass. Tracks collected items, with custom art and distance display.
 
-By **Terru03**. Public downloads, docs, screenshots, and support live here. Development source, research, capture logs, and build tools stay in private repo. Release ZIPs include runtime Lua and install scripts needed by mod.
+By **Terru03**. Public downloads, docs, screenshots, and support live here. Development source, research, capture logs, and build tools live in a separate repository. Release ZIPs include runtime Lua and install scripts needed by mod.
 
 ## Downloads
 
 | Release | Status | Download |
 | --- | --- | --- |
-| [v1.0.1](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.1) | Current stable | [CompletionistMap-v1.0.1.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.1/CompletionistMap-v1.0.1.zip) |
-| [v1.0.2](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.2) | Test release / pre-release | [CompletionistMap-v1.0.2.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.2/CompletionistMap-v1.0.2.zip) |
+| [v1.0.4](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.4) | Current release; player-tested chest and startup fixes | [CompletionistMap-v1.0.4.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.4/CompletionistMap-v1.0.4.zip) |
+| [v1.0.2](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.2) | Previous test release / pre-release | [CompletionistMap-v1.0.2.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.2/CompletionistMap-v1.0.2.zip) |
+| [v1.0.1](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.1) | Previous release | [CompletionistMap-v1.0.1.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.1/CompletionistMap-v1.0.1.zip) |
 
 [All releases](https://github.com/Terru03/completionist-map-gow2018-releases/releases) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396) · [Changelog](CHANGELOG.md)
 
-Get named release ZIP. GitHub's automatic **Source code** archives hold this docs repo; they do not hold mod package.
+Get the named release ZIP. The exact v1.0.4 package and checksum are also recorded in [`releases/v1.0.4/`](releases/v1.0.4/). See the [explicit v1.0.4 changelog](releases/v1.0.4.md) for the chest fix, retained Windows 10 fix, player feedback and validation scope. Nexus scan and manual verification are separate from these gameplay tests.
 
 ## Features
 

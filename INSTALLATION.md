@@ -15,13 +15,13 @@ Install **GoW Script Loader & Gameplay Tweaks 0.22** (`version.dll`) first. Othe
 Check package SHA256 against [SHA256SUMS.txt](SHA256SUMS.txt). In PowerShell:
 
 ```powershell
-Get-FileHash -LiteralPath '.\CompletionistMap-v1.0.1.zip' -Algorithm SHA256
+Get-FileHash -LiteralPath '.\CompletionistMap-v1.0.4.zip' -Algorithm SHA256
 ```
 
 ## One-click install
 
 1. Close God of War.
-2. Download full `CompletionistMap-v1.0.1.zip` from [stable release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/latest). For test build, get `CompletionistMap-v1.0.2.zip` from [v1.0.2 pre-release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.2).
+2. Download the full `CompletionistMap-v1.0.4.zip` from the [current release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.4).
 3. Extract ZIP to folder you can write to.
 4. Run `Install.bat`. Installer finds game folder, checks EXE and payload hashes, backs up stock files to `completionist_backup`, then installs mod.
 5. Keep backup folder and extracted installer files.

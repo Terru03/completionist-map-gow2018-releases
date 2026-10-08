@@ -1,0 +1,97 @@
+{
+  "version": "1.0.4",
+  "filename": "CompletionistMap-v1.0.4.zip",
+  "size": 11805295,
+  "sha256": "98e636552ecd21483fad5d715109bf9ffe4ce974e0c1b07c2118c4287d99f08b",
+  "tested_zip_sha256": "0c62c03661e47e8934586bdd9e2fd5f4dd6816be6ebfa2da13f1d832b87f3117",
+  "installed_payloads_unchanged": 20,
+  "installer_files_unchanged": 4,
+  "metadata_changed": [
+    "CHANGELOG.txt",
+    "README.txt",
+    "manifest.json"
+  ],
+  "removed_test_note": "CHEST-TRACKING-TEST.txt",
+  "files": {
+    "dxgi.dll": {
+      "size": 193024,
+      "sha256": "923afa1bc59751722f32351ffc17d337ef86beec4a89066dee6909d4e226357e"
+    },
+    "exec/dc/pc_le/mapcoords.dcb": {
+      "size": 160768,
+      "sha256": "7644b280ee4bedc1af7a4d81d5e1aacfaaac91ec8795c8f2f4434b4fa0534772"
+    },
+    "exec/dc/pc_le/mapmaster.dcb": {
+      "size": 208368,
+      "sha256": "88cd527582efe5d708d465e6593921e92164831b9b2d34bd36c5b47aa0ec920d"
+    },
+    "exec/dc/pc_le/wad_r_perm.dcb": {
+      "size": 5584496,
+      "sha256": "217048e876014869608f873ddb02550d9e29b3d3dc66427ad6a41c0649ec6841"
+    },
+    "exec/dc/pc_le/wad_r_ui.dcb": {
+      "size": 41552,
+      "sha256": "9a22b36bb09167f967ab708471fab253b1292ed733dc1347a41f02e802c102c6"
+    },
+    "exec/patch/pc_le/completionist_v105_family_art.texpack": {
+      "size": 2061424,
+      "sha256": "eafeb31882ceff41dc50b1d6cd3057fb57f5e6a83585a9992b6044f606603485"
+    },
+    "exec/patch/pc_le/completionist_v105_family_art.texpack.toc": {
+      "size": 1744,
+      "sha256": "31a97b87a27623a5b1b023113afc288b5e435a8ecca2a372d1da69e18f8f28f4"
+    },
+    "exec/wad/pc_le/r_ui.wad": {
+      "size": 50406128,
+      "sha256": "44866aaa861a62dd4d4aacad5dd39881728e055925d6113e26f2dfaa03143204"
+    },
+    "mods/completionist-map/native/collectible-base-dxgi.dll": {
+      "size": 396800,
+      "sha256": "9043eac673ae15cd4f4b5c2f5bc96c64d17aa1fd613d588ce2547532fcb8f02c"
+    },
+    "mods/completionist-map/native/raven-native-bridge-manifest.json": {
+      "size": 625,
+      "sha256": "9e011761beccf5f1d618e8ba80c6ede1c0a26384d40fe875b7218cefbff34139"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/interactive/triptychs/interact_triptych.lua": {
+      "size": 12050,
+      "sha256": "9cc7a16407005a2fc16359c80fed4cd1f39eb8b8d3d96811e4a82df8a56ba627"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_chest_runic.lua": {
+      "size": 25000,
+      "sha256": "e9c77fbaa9ba8d678d0ade38f1016b83dd20ebda9d252189973490a1c73ff454"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_chest_standard.lua": {
+      "size": 37601,
+      "sha256": "0cc8b8ae7b8685b01e0449e7ba110cefeda19d00f9c2dba2987803752f38f3c7"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_artifact.lua": {
+      "size": 14301,
+      "sha256": "30e69322ecdcf3ccd0a884e0d281ff3db28adb869c23e2ad3806da8f023d8bf3"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_dirtdig.lua": {
+      "size": 9227,
+      "sha256": "56936cc8e6f0765980499e0b3752ca5976d73121813905c0625b5968a82fd9b0"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_pocketrift.lua": {
+      "size": 17536,
+      "sha256": "c8593984f001a9817a10a522dbbcd2c2e145e767a130d319744d8a9293be3c91"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/precisionchallenge.lua": {
+      "size": 30505,
+      "sha256": "b7039c3c558e82dd9cbd4053b2bf9baddfd34b9ad65f34d631556ad9a7378054"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/soninteracts/langcheckruneread.lua": {
+      "size": 11110,
+      "sha256": "28a9dcb9877b4d0f76fa67aa99cb894e9209f8ba0341dd5713913af0521f273d"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/soninteracts/sonlanguagepickup.lua": {
+      "size": 9523,
+      "sha256": "d9afbfb4d7f0445a6ae5665c317cce9b68fe21704e1c7062d0651e7c7b657872"
+    },
+    "mods/lua/gameart/ui/scripts/inworldmenu/mapmenu.lua": {
+      "size": 642690,
+      "sha256": "89312da4a21d22bd651fe30ead5d45abddee6b318781fa9bd965315ada349787"
+    }
+  }
+}
