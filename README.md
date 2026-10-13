@@ -25,6 +25,10 @@ Get the named release ZIP. The exact v1.0.5 package and checksum are also record
 - Completion checks across map opens, reloads, and realm changes.
 - Installer and uninstaller, with stock-file backups.
 
+### Native map filters
+
+All custom markers are organized into dedicated collectible-category filters integrated with the game's native map filters. Use the normal map filter controls to focus on the marker types you want to see, such as Ravens, chests or Artefacts. Related Nornir puzzle markers are grouped under the Nornir Puzzle filter.
+
 Custom families: Odin's Ravens; Nornir Chests, Seals, Bells, and Mechanisms; Legendary, Cipher, Wooden, and Red / Coffin Chests; Artefacts; Jötnar Shrines; Lore Markers and Scrolls; Realm Tears; Treasure Maps and Dig Sites.
 
 Valkyries, Valkyrie Queen, Mystic Gateways, and Shops keep game's own pins. Mod does not set fake collectible or quest progress.
@@ -69,3 +73,4 @@ Give mod version, Windows version, game build, install method, and exact error. 
 - Santa Monica Studio and Sony Interactive Entertainment: God of War.
 
 No separate open-source or artwork reuse licence granted. Ask author before reuse or redistribution. Game and third-party tools keep own rights.
+

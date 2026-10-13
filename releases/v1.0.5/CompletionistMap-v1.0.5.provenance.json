@@ -1,8 +1,8 @@
 {
   "version": "1.0.5",
   "filename": "CompletionistMap-v1.0.5.zip",
-  "size": 11804583,
-  "sha256": "f7af03a2ee0d43358cf2f4f67a2534a2087a394cb1d90daedbb84bdfc2615aaa",
+  "size": 11804707,
+  "sha256": "a0a47f63ad8fd284570fce05f076d33138c7841fdd36f28a3cde9b9d24459c8b",
   "installed_payloads_unchanged": 17,
   "native_binaries_updated": 2,
   "manifest_updated": 1,
@@ -87,5 +87,12 @@
       "size": 642690,
       "sha256": "89312da4a21d22bd651fe30ead5d45abddee6b318781fa9bd965315ada349787"
     }
-  }
+  },
+  "documentation_revision": "Native map category filters",
+  "previous_archive_sha256": "f7af03a2ee0d43358cf2f4f67a2534a2087a394cb1d90daedbb84bdfc2615aaa",
+  "changed_archive_entries": [
+    "README.txt"
+  ],
+  "runtime_and_installer_bytes_unchanged": true,
+  "readme_sha256": "37a8711a1cf90b61d1fdc0672d5a5b0b5cf702d78ec28cc3615a901d04d32689"
 }
