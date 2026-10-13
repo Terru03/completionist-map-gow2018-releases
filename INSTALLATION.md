@@ -2,28 +2,22 @@
 
 ## Before install
 
-Use Windows 10 or 11, 64-bit. Supported game is **Steam 1.0.13**, with `GoW.exe` file version **1.0.475.7534**.
+Use Windows 10 or 11, 64-bit. Compatible with all God of War (2018) PC versions: **Steam, Epic Games, GOG, and non-official builds (CODEX, repacks, etc.)**.
 
-Supported `GoW.exe` SHA256:
-
-```text
-caebcb027980d7eac9203d190f9ee649eebc549f8defce138e2114dc91f40452
-```
-
-Install **GoW Script Loader & Gameplay Tweaks 0.22** (`version.dll`) first. Other game EXE builds not supported. Full mod needs supported EXE even when graphics fallback lets game start.
+Install **GoW Script Loader & Gameplay Tweaks 0.22** (`version.dll`) first.
 
 Check package SHA256 against [SHA256SUMS.txt](SHA256SUMS.txt). In PowerShell:
 
 ```powershell
-Get-FileHash -LiteralPath '.\CompletionistMap-v1.0.4.zip' -Algorithm SHA256
+Get-FileHash -LiteralPath '.\CompletionistMap-v1.0.5.zip' -Algorithm SHA256
 ```
 
 ## One-click install
 
 1. Close God of War.
-2. Download the full `CompletionistMap-v1.0.4.zip` from the [current release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.4).
+2. Download the full `CompletionistMap-v1.0.5.zip` from the [current release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.5).
 3. Extract ZIP to folder you can write to.
-4. Run `Install.bat`. Installer finds game folder, checks EXE and payload hashes, backs up stock files to `completionist_backup`, then installs mod.
+4. Run `Install.bat`. Installer finds game folder, checks payload hashes, backs up stock files to `completionist_backup`, then installs mod.
 5. Keep backup folder and extracted installer files.
 6. Launch game, then open map.
 
@@ -45,8 +39,6 @@ Close game, extract new full release ZIP, then run its `Install.bat`. Keep origi
 
 4. Keep all other entries. Use valid JSON.
 
-Mod managers bypass installer checks. Check supported EXE hash yourself. See package's `README.txt` for full layout.
-
 ## Manual install
 
 1. Close game. Back up affected files and `exec/boot-options.json` first.
@@ -54,15 +46,8 @@ Mod managers bypass installer checks. Check supported EXE hash yourself. See pac
 3. Ensure GoW Script Loader 0.22 installed.
 4. Register art texpack in `exec/boot-options.json` as shown above.
 
-Manual copy bypasses installer checks. Use supported EXE hash only.
-
 ## Remove mod
 
-- Installer: close game, then run `Uninstall.bat`. Restores stock backup and removes mod files.
-- Vortex / MO2: disable and undeploy mod.
-- Manual: restore your stock backups, or verify game files through Steam / Epic.
-- Vortex / manual: remove only mod's art texpack entry from `patch-texpacks`; keep other entries.
-
-## Help
-
-Post [GitHub issue](https://github.com/Terru03/completionist-map-gow2018-releases/issues) with mod version, Windows version, game build, install method, and exact error. Hide private paths and personal info in logs. Do not upload game files or saves.
+- If installed with `Install.bat`: run `Uninstall.bat`. It restores original files from `completionist_backup` and cleans up mod files.
+- If mod manager: disable and undeploy in Vortex / MO2, and restore `exec/boot-options.json`.
+- If manual: restore backups or verify file integrity via Steam/Epic.

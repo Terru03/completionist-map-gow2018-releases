@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.5 — Universal Compatibility & Chest Tracking (2026-10-13)
+
+- **Universal game compatibility:** Fully supports all God of War (2018) PC releases, including Steam, Epic Games, GOG, and non-official builds (CODEX, repacks, etc.).
+- **Dynamic executable detection:** Removed hardcoded game version and hash locks from the native bridge runtime (`dxgi.dll`) and the installer (`Install.bat` / `install.ps1`). Executable checks are non-blocking.
+- **Chest tracking fix retained:** Incorporates the player-verified v1.0.4 chest tracking fix in `mapmenu.lua` (SHA256: `89312da4a21d22bd651fe30ead5d45abddee6b318781fa9bd965315ada349787`), verifying inner owner ancestry so opened wooden and red/coffin chests disappear properly.
+- **Zero regressions:** Retains Odin's Raven native authority tracking, real-time 3D compass waypoint clearing, and collectible state persistence.
+- **Stability:** Retains Windows 10/11 compatibility layer protections to avoid early ntdll crashes.
+
+[Release and ZIP](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.5). See [release notes and verification](releases/v1.0.5.md).
+
 ## v1.0.4 - Chest Tracking and Windows 10 Startup Fix (updated 2026-10-08)
 
 - Fix opened wooden and red/coffin chest pins staying **Not collected** when the live scene omits outer catalogue ancestors. Check the inner chest-owner path against its exact placement before reading its opened state.

@@ -8,13 +8,14 @@ By **Terru03**. Public downloads, docs, screenshots, and support live here. Deve
 
 | Release | Status | Download |
 | --- | --- | --- |
-| [v1.0.4](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.4) | Current release; player-tested chest and startup fixes | [CompletionistMap-v1.0.4.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.4/CompletionistMap-v1.0.4.zip) |
+| [v1.0.5](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.5) | Current release; universal PC compatibility & verified chest tracking | [CompletionistMap-v1.0.5.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.5/CompletionistMap-v1.0.5.zip) |
+| [v1.0.4](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.4) | Previous release; player-tested chest and startup fixes | [CompletionistMap-v1.0.4.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.4/CompletionistMap-v1.0.4.zip) |
 | [v1.0.2](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.2) | Previous test release / pre-release | [CompletionistMap-v1.0.2.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.2/CompletionistMap-v1.0.2.zip) |
 | [v1.0.1](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.1) | Previous release | [CompletionistMap-v1.0.1.zip](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.1/CompletionistMap-v1.0.1.zip) |
 
 [All releases](https://github.com/Terru03/completionist-map-gow2018-releases/releases) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396) · [Changelog](CHANGELOG.md)
 
-Get the named release ZIP. The exact v1.0.4 package and checksum are also recorded in [`releases/v1.0.4/`](releases/v1.0.4/). See the [explicit v1.0.4 changelog](releases/v1.0.4.md) for the chest fix, retained Windows 10 fix, player feedback and validation scope. Nexus scan and manual verification are separate from these gameplay tests.
+Get the named release ZIP. The exact v1.0.5 package and checksum are also recorded in [`releases/v1.0.5/`](releases/v1.0.5/). See the [explicit v1.0.5 changelog](releases/v1.0.5.md) for universal compatibility, the chest fix, retained Windows 10 fix, player feedback and validation scope. Nexus scan and manual verification are separate from these gameplay tests.
 
 ## Features
 
@@ -31,13 +32,13 @@ Valkyries, Valkyrie Queen, Mystic Gateways, and Shops keep game's own pins. Mod 
 ## Requirements and setup
 
 - Windows 10 or 11, 64-bit.
-- Supported game: **Steam 1.0.13 / GoW.exe 1.0.475.7534**. Other EXE builds not supported.
+- Supported game: Compatible with all God of War (2018) PC versions (**Steam, Epic Games, GOG, and non-official builds like CODEX/repacks**). Version checks are non-blocking.
 - **GoW Script Loader & Gameplay Tweaks 0.22** (`version.dll`) installed first.
 - Avoid other mods that replace `dxgi.dll` or same map files.
 
 Close game. Extract full release ZIP, then run `Install.bat`. Keep backup folder. Launch game and open map. Use `Uninstall.bat` to restore stock files.
 
-See [full install, update, and removal steps](INSTALLATION.md). Installer can find Steam and Epic game folders; folder discovery does not mean other EXE builds supported.
+See [full install, update, and removal steps](INSTALLATION.md).
 
 ## Screenshots
 
