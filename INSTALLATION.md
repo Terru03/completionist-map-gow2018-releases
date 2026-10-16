@@ -4,22 +4,32 @@
 
 Use Windows 10 or 11, 64-bit. Compatible with all God of War (2018) PC versions: **Steam, Epic Games, GOG, and non-official builds (CODEX, repacks, etc.)**.
 
-Install **GoW Script Loader & Gameplay Tweaks 0.22** (`version.dll`) first.
+GoW Script Loader & Gameplay Tweaks 0.22 (`version.dll`) is bundled in `prerequisites/` and automatically installed by `Install.bat` / `Install-SteamDeck.sh` if not already present.
 
 Check package SHA256 against [SHA256SUMS.txt](SHA256SUMS.txt). In PowerShell:
 
 ```powershell
-Get-FileHash -LiteralPath '.\CompletionistMap-v1.0.5.zip' -Algorithm SHA256
+Get-FileHash -LiteralPath '.\CompletionistMap-v1.0.6.zip' -Algorithm SHA256
 ```
 
-## One-click install
+## One-click install (Windows PC & Handhelds)
 
 1. Close God of War.
-2. Download the full `CompletionistMap-v1.0.5.zip` from the [current release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.5).
-3. Extract ZIP to folder you can write to.
-4. Run `Install.bat`. Installer finds game folder, checks payload hashes, backs up stock files to `completionist_backup`, then installs mod.
+2. Download the full `CompletionistMap-v1.0.6.zip` from the [current release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.6).
+3. Extract ZIP to a folder you can write to.
+4. Run `Install.bat`. The installer automatically detects your game folder, handles UAC Administrator elevation if needed, checks and installs GoW Script Loader (`version.dll`) from `prerequisites/` if missing, backs up stock files to `completionist_backup`, and registers the mod.
 5. Keep backup folder and extracted installer files.
 6. Launch game, then open map.
+
+## Steam Deck & Linux (SteamOS Proton)
+
+1. Extract `CompletionistMap-v1.0.6.zip` in Desktop Mode.
+2. Run `./Install-SteamDeck.sh` in a terminal (or copy files into game folder).
+3. In Steam Launch Options for God of War, set:
+   ```text
+   WINEDLLOVERRIDES="dxgi,version=n,b" %command%
+   ```
+
 
 Keep mod's `dxgi.dll` in game folder. Avoid other mods that replace same DLL or map files. If install fails, copy exact error for support.
 

@@ -1,8 +1,8 @@
 {
   "version": "1.0.6",
   "filename": "CompletionistMap-v1.0.6.zip",
-  "size": 12494740,
-  "sha256": "d1b896242d03c8730be4dc5c4227de0a3ebc56b4cadfb1c879701f5bf808f672",
+  "size": 12503459,
+  "sha256": "4bd4abefdd7599ae38aa284bc57e31c86b2ce5d5f0af22623509f838c819f755",
   "installed_payloads_unchanged": 19,
   "lua_scripts_updated": 1,
   "manifest_updated": 1,
@@ -97,5 +97,5 @@
     "manifest.json",
     "prerequisites/version.dll"
   ],
-  "readme_sha256": "2e4fa167aa65f9568202c2baaadbb4a4f27ceaed6b2912f2c99ab39b9b4e4007"
+  "readme_sha256": "22f07cb4abf642b8f1e156163abb1207dd16cd5b50b265484becc82fa585b27f"
 }

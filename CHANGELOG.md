@@ -2,35 +2,40 @@
 
 For the exhaustive numbered prototype list, including superseded and failed test builds, see [`docs/VERSION_HISTORY.md`](docs/VERSION_HISTORY.md).
 
-## v1.0.6 - Caldera Hub / Cliffs of the Raven Trigger Exhaustion Fix (2026-10-15)
+## v1.0.6 - Caldera Hub / Cliffs of the Raven Trigger Exhaustion Fix & Universal Multi-Device Support (2026-10-15)
 
-- **Automated Prerequisite Check & Installer (version.dll)**: The 1-click installer now automatically checks whether GoW Script Loader (`version.dll`) is present in the God of War game directory. If missing, it automatically installs the bundled `version.dll` from `prerequisites/`, ensuring loose Lua scripts load reliably and pins disappear from the map when collected.
-- **Caldera Hub / Cliffs of the Raven Trigger Exhaustion Fix**: Fixed a fatal unrecoverable Lua error (`entityvariablemessaginglibrary.lua:216: ran out of triggers!`) that crashed the game when entering the Cliffs of the Raven in the Lake of Nine (`WAD_Cal100_Hub`) or other areas with dense lore markers.
+- **Automated Prerequisite Check & Installer (version.dll)**: I updated the 1-click installer to automatically check whether GoW Script Loader (`version.dll`) is present in the God of War game directory. If missing, it automatically installs the bundled `version.dll` from `prerequisites/`, ensuring loose Lua scripts load reliably and pins disappear from the map when collected.
+- **Caldera Hub / Cliffs of the Raven Trigger Exhaustion Fix**: I fixed a fatal unrecoverable Lua error (`entityvariablemessaginglibrary.lua:216: ran out of triggers!`) that crashed the game when entering the Cliffs of the Raven in the Lake of Nine (`WAD_Cal100_Hub`) or other areas with dense lore markers.
   - **Root Cause**: The God of War engine has a fixed static capacity table limit of 512 triggers (`0x200`). Unlike chests, artefacts, and rifts, `langcheckruneread.lua` does not define `OnStart`. Its collectible observation wrapper previously tested `if type(OnStart) == "function"`, which resolved to the enclosing level script's `_G.OnStart` (`cal100_hub.lua:OnStart`). As each of the 26 rune markers loaded, it wrapped `_G.OnStart`, causing `cal100_hub.lua`'s `OnStart` to re-execute on each marker dispatch and accumulate over 512 entity variable monitors, crashing the Lua VM.
-  - **Resolution**: Updated `langcheckruneread.lua` to observe `OnPreStart` (`if type(OnPreStart) == "function" then OnPreStart = wrap(OnPreStart) end`), leaving `_G.OnStart` untouched and allowing the level script to initialize exactly once (~30 triggers total).
-- **Universal PC Build Compatibility**: Retains full support across all God of War (2018) PC versions (Steam, Epic Games, GOG, and non-official builds/repacks).
-- **Verified Chest Tracking**: Retains full inner owner ancestry checks for opened wooden and red/coffin chests with zero regressions.
-- **Native Authority & Compass Clearing**: Retains Odin's Raven native authority tracking, real-time 3D in-world compass clearing, and Artefact/Realm Tear tracking.
+  - **Resolution**: I updated `langcheckruneread.lua` to observe `OnPreStart` (`if type(OnPreStart) == "function" then OnPreStart = wrap(OnPreStart) end`), leaving `_G.OnStart` untouched and allowing the level script to initialize exactly once (~30 triggers total).
+- **Universal Multi-Device & Firmware Support**:
+  - I verified full compatibility across Desktop PCs, Laptops, Windows Handhelds (ASUS ROG Ally, ROG Ally X, Lenovo Legion Go, MSI Claw), and Steam Deck / Linux (SteamOS Proton).
+  - I added automated Windows UAC elevation if God of War is located in protected folders like `C:\Program Files (x86)\...`.
+  - I added a dedicated Steam Deck / Linux shell installer (`Install-SteamDeck.sh` / `Uninstall-SteamDeck.sh`) and documented Proton launch options (`WINEDLLOVERRIDES="dxgi,version=n,b" %command%`).
+  - I added a ZIP extraction guard in `Install.bat` / `Uninstall.bat` to detect and guide users attempting to run scripts directly from inside unextracted ZIP archives.
+- **Universal PC Build Compatibility**: I retain full support across all God of War (2018) PC versions (Steam, Epic Games, GOG, and non-official builds/repacks).
+- **Verified Chest Tracking**: I retain full inner owner ancestry checks for opened wooden and red/coffin chests with zero regressions.
+- **Native Authority & Compass Clearing**: I retain Odin's Raven native authority tracking, real-time 3D in-world compass clearing, and Artefact/Realm Tear tracking.
 
 ## v1.0.5 - Universal PC Build Compatibility (2026-10-13)
 
-- **Universal Game Build Compatibility**: Removed hardcoded executable version and hash checks from both the native bridge runtime (`dxgi.dll`) and installer (`Install.bat` / `install.ps1`), allowing all God of War (2018) PC releases (Steam, Epic Games, GOG, and non-official builds) to install and run smoothly.
-- **Verified Chest Tracking**: Retains the player-verified v1.0.4 chest tracking fix validating inner owner ancestry so opened wooden and red/coffin chest pins correctly disappear.
-- **Zero Regressions**: Retains Odin's Raven native authority tracking, real-time 3D compass waypoint clearing, Artefacts and Realm Tear completion authority.
-- **Native Stability**: Retains Windows 10/11 compatibility layer protections without early ntdll crashes.
-- **Native Map Category Filters**: Documented native map filter integration in packaged README.
+- **Universal Game Build Compatibility**: I removed hardcoded executable version and hash checks from both the native bridge runtime (`dxgi.dll`) and installer (`Install.bat` / `install.ps1`), allowing all God of War (2018) PC releases (Steam, Epic Games, GOG, and non-official builds) to install and run smoothly.
+- **Verified Chest Tracking**: I retained the player-verified v1.0.4 chest tracking fix validating inner owner ancestry so opened wooden and red/coffin chest pins correctly disappear.
+- **Zero Regressions**: I retained Odin's Raven native authority tracking, real-time 3D compass waypoint clearing, Artefacts and Realm Tear completion authority.
+- **Native Stability**: I retained Windows 10/11 compatibility layer protections without early ntdll crashes.
+- **Native Map Category Filters**: I documented native map filter integration in the packaged README.
 
 ## v1.0.4 - Chest Tracking and Windows 10 Startup Fix (updated 2026-10-08)
 
-- Promote the Discord chest-tracking test to the production package while retaining version **1.0.4**. All 20 installed payloads and all four installer files are byte-for-byte identical to the tested ZIP.
-- Fix opened wooden and red/coffin chests staying marked **Not collected** when the loaded scene collapses catalogue ancestors outside the accepted chest placement. Validate the complete inner owner path against that exact placement so the opened state reaches map and compass tracking.
-- Preserve duplicate-placement, duplicate-owner, wrong-inner-path and save-epoch checks; loading an older save with an unopened chest can restore its uncollected state.
-- On 2026-10-08 the author reported successful feedback from the Discord tester. The tester confirmed that opened red/common chests disappear and killed Ravens are tracked correctly. This is one player's field result, alongside the offline regressions below.
-- Retain the 2026-10-06 Windows 10 startup fix and the earlier Realm Tear, Artefact and live compass-clearing fixes:
+- I promoted the Discord chest-tracking test to the production package while retaining version **1.0.4**. All 20 installed payloads and all four installer files are byte-for-byte identical to the tested ZIP.
+- I fixed opened wooden and red/coffin chests staying marked **Not collected** when the loaded scene collapses catalogue ancestors outside the accepted chest placement. Validate the complete inner owner path against that exact placement so the opened state reaches map and compass tracking.
+- I preserved duplicate-placement, duplicate-owner, wrong-inner-path and save-epoch checks; loading an older save with an unopened chest can restore its uncollected state.
+- On 2026-10-08 I received successful feedback from the Discord tester. The tester confirmed that opened red/common chests disappear and killed Ravens are tracked correctly. This is one player's field result, alongside the offline regressions below.
+- I retained the 2026-10-06 Windows 10 startup fix and the earlier Realm Tear, Artefact and live compass-clearing fixes:
 
-- Handle `SetAppCompatStringPointer` before either proxy's static CRT initialization without allocating, loading DLLs, or starting native workers. Replay the original compatibility arguments when graphics initialization begins.
-- Fix the reproduced `ntdll` access violation from this early call. The supplied Windows 10 LTSC report has matching v1.0.1 DLL hashes and compatibility shims, but no crash stack; the reporting player confirmed successful startup on 2026-10-06.
-- Add regressions for calls before CRT initialization and deferred compatibility argument replay in both native layers. Keep the supported EXE, companion hash, native instruction guards, and existing marker capacities.
+- I handled `SetAppCompatStringPointer` before either proxy's static CRT initialization without allocating, loading DLLs, or starting native workers. Replay the original compatibility arguments when graphics initialization begins.
+- I fixed the reproduced `ntdll` access violation from this early call. The supplied Windows 10 LTSC report has matching v1.0.1 DLL hashes and compatibility shims, but no crash stack; the reporting player confirmed successful startup on 2026-10-06.
+- I added regressions for calls before CRT initialization and deferred compatibility argument replay in both native layers. Keep the supported EXE, companion hash, native instruction guards, and existing marker capacities.
 
 ## v1.0.3 - Real-Time In-World Compass Clearing & Full Artefact Authority Fix
 

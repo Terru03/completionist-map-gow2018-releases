@@ -27,7 +27,7 @@ Completionist Map extends the native map and compass with custom markers for **1
 
 All 16 families are part of Completionist Map. Some families use different internal completion-state sources where required by the game. For example, Odin's Ravens use their proven native authority path internally, but they are part of the same mod and the same completionist marker experience.
 
-The mod follows a strict **no-duplicate-native-marker** policy. It does not add redundant Completionist Map pins for content that already has adequate native map and compass support, including **Valkyries, the Valkyrie Queen, Mystic Gateways and Shops**. Artwork for some native-only categories may exist in the repository's design/research asset pool, but those assets are not active custom marker families.
+I follow a strict **no-duplicate-native-marker** policy. I do not add redundant Completionist Map pins for content that already has adequate native map and compass support, including **Valkyries, the Valkyrie Queen, Mystic Gateways and Shops**. Artwork for some native-only categories may exist in the repository's design/research asset pool, but those assets are not active custom marker families.
 
 Markers added by Completionist Map use original, category-specific artwork designed to fit the God of War UI rather than reusing unrelated stock icons.
 
@@ -49,19 +49,19 @@ Markers added by Completionist Map use original, category-specific artwork desig
 
 All custom markers are organized into dedicated collectible-category filters integrated with the game's native map filters. Use the normal map filter controls to focus on the marker types you want to see, such as Ravens, chests or Artefacts. Related Nornir puzzle markers are grouped under the Nornir Puzzle filter.
 
-The mod does **not** manufacture quest progress or mark collectibles complete for the player.
+I do not manufacture quest progress or mark collectibles complete for the player; every collectible must be earned legitimately.
 
 ## Release status
 
-v1.0.6 fixes the fatal Lua trigger exhaustion crash (`entityvariablemessaginglibrary.lua:216: ran out of triggers!`) that occurred when entering the Cliffs of the Raven in the Lake of Nine or other areas with dense lore markers, by switching the observation lifecycle hook in `langcheckruneread.lua` to `OnPreStart` instead of the enclosing level script's `_G.OnStart`.
+In v1.0.6, I fixed the fatal Lua trigger exhaustion crash (`entityvariablemessaginglibrary.lua:216: ran out of triggers!`) that occurred when entering the Cliffs of the Raven in the Lake of Nine or other areas with dense lore markers, by switching the observation lifecycle hook in `langcheckruneread.lua` to `OnPreStart` instead of the enclosing level script's `_G.OnStart`.
 
-It retains universal PC build compatibility across all God of War (2018) PC releases (Steam, Epic Games, GOG, and non-official builds like CODEX/repacks), 100% of the proven v1.0.4 chest tracking fix (proper owner path ancestry validation for opened wooden and red/coffin chests), native Odin's Raven completion authority, real-time 3D in-world compass clearing, and Windows 10/11 compatibility layer protections with zero regressions. See the [v1.0.6 release record](docs/releases/v1.0.6-release.md).
+I also retained universal PC build compatibility across all God of War (2018) PC releases (Steam, Epic Games, GOG, and non-official builds like CODEX/repacks), 100% of the proven v1.0.4 chest tracking fix (proper owner path ancestry validation for opened wooden and red/coffin chests), native Odin's Raven completion authority, real-time 3D in-world compass clearing, and Windows 10/11 compatibility layer protections with zero regressions. See the [v1.0.6 release record](docs/releases/v1.0.6-release.md).
 
 Older issues, research notes and archived probes remain in the repository as development history. They should not be interpreted as current release blockers.
 
 ## Installation
 
-The Nexus package is built around universal 1-click installation:
+I built the release package around universal 1-click installation:
 
 ### Option A: Windows 1-Click Installer (PC & Handhelds)
 1. Extract the release archive completely to any folder.

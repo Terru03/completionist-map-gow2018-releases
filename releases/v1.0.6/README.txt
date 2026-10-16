@@ -29,32 +29,33 @@ Steam Deck / Linux (SteamOS Proton) Users:
 1. WHAT'S NEW IN v1.0.6
 --------------------------------------------------------------------------------
 - Fixes Caldera Hub / Cliffs of the Raven Trigger Exhaustion Crash:
-  Resolves the fatal unrecoverable Lua error ("ran out of triggers!" in
+  I resolved the fatal unrecoverable Lua error ("ran out of triggers!" in
   entityvariablemessaginglibrary.lua) that occurred when approaching the Cliffs
   of the Raven in the Lake of Nine or other areas with dense lore markers.
-  Corrects the collectible observation lifecycle hook in langcheckruneread.lua to
+  I corrected the collectible observation lifecycle hook in langcheckruneread.lua to
   observe OnPreStart rather than the enclosing level script's _G.OnStart,
   preventing duplicate trigger registration from accumulating beyond the engine's
   512-trigger static capacity table limit.
 - Automatic 1-Click Prerequisite Check & Installer (version.dll):
-  Fixes the issue where collected items and opened chests failed to disappear from
+  I fixed the issue where collected items and opened chests failed to disappear from
   the map. God of War requires GoW Script Loader (version.dll) to load custom Lua
-  scripts. The 1-click installer now automatically detects version.dll in your game
-  folder. If missing, it installs the bundled version.dll from prerequisites/
+  scripts. I updated the 1-click installer to automatically detect version.dll in your
+  game folder. If missing, it installs the bundled version.dll from prerequisites/
   automatically, while safely preserving existing installs.
 - True 1-Click Installation & Elevated UAC Handling:
-  The installer automatically requests Windows Administrator elevation when God of War
-  is installed in protected paths (e.g. C:\Program Files (x86)\...), unsets the
-  Read-Only flag on boot-options.json, and includes extraction guards to prevent errors.
+  I added automatic Windows Administrator elevation handling when God of War is
+  installed in protected paths (e.g. C:\Program Files (x86)\...), automatic clearing
+  of the Read-Only flag on boot-options.json, and extraction guards to prevent errors.
 - Universal Multi-Device & Firmware Support:
-  Fully verified on Desktop PCs, Laptops, Windows Handhelds (ASUS ROG Ally, ROG Ally X,
-  Lenovo Legion Go, MSI Claw), and Steam Deck / Linux (SteamOS Proton).
+  I verified full compatibility on Desktop PCs, Laptops, Windows Handhelds (ASUS ROG
+  Ally, ROG Ally X, Lenovo Legion Go, MSI Claw), and Steam Deck / Linux (SteamOS Proton).
+  I also created a dedicated native Install-SteamDeck.sh shell script.
 - Universal PC Build Compatibility:
-  Dynamic non-blocking executable checks ensure 100% compatibility across all
-  God of War (2018) PC builds: Steam (v1.0.0 through v1.0.12), Epic Games Store,
+  I implemented dynamic non-blocking executable checks ensuring 100% compatibility across
+  all God of War (2018) PC builds: Steam (v1.0.0 through v1.0.12), Epic Games Store,
   GOG, and non-official builds (CODEX, repacks, etc.).
 - Verified Chest Tracking & Zero Regressions:
-  Retains the complete inner owner ancestry validation for opened wooden and red/coffin
+  I retained the complete inner owner ancestry validation for opened wooden and red/coffin
   chests, Odin's Raven native authority tracking, real-time 3D compass waypoint clearing,
   and Windows 10/11 compatibility layer protections without early ntdll crashes.
 
@@ -88,8 +89,8 @@ Steam Deck / Linux (SteamOS Proton) Users:
   Custom markers are grouped into dedicated category filters integrated into
   the game's native map filter controls.
 - Strict No-Duplicate Policy:
-  Valkyries, the Valkyrie Queen, Mystic Gateways, and Shops remain handled by
-  the base game's native systems.
+  I designed the mod so Valkyries, the Valkyrie Queen, Mystic Gateways, and
+  Shops remain handled by the base game's native systems.
 
 --------------------------------------------------------------------------------
 3. COMPATIBILITY MATRIX
@@ -135,5 +136,6 @@ OPTION D: Manual Installation
 - Manual: Restore backed up files from completionist_backup/ or verify game files.
 
 ================================================================================
-Created with care for the God of War PC community. Enjoy your 100% journey!
+Created with care by Terru03 (solo dev) for the God of War PC community.
+Enjoy your 100% journey!
 ================================================================================
