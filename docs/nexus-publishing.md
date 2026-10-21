@@ -6,7 +6,7 @@ The workflow downloads the existing GitHub release ZIP, checksum, and provenance
 
 ## One-time configuration
 
-1. In the author's signed-in Nexus account, obtain a personal API key from [API access](https://www.nexusmods.com/users/myaccount?tab=api%20access).
+1. In the author's signed-in Nexus account, obtain a personal API key from [API access](https://www.nexusmods.com/settings/api-keys).
 2. Store it as the `NEXUSMODS_API_KEY` GitHub Actions secret in this repository's [Actions settings](https://github.com/Terru03/completionist-map-gow2018-releases/settings/secrets/actions). Keep the key out of chat, commits, workflow inputs, and logs.
 3. Set repository variables `NEXUSMODS_FILE_ID` and `NEXUSMODS_MOD_ID` using the IDs shown by the Nexus **Advanced** file controls or the Manage Files edit menu, as described by the official action. Use the API's identifiers; do not assume that legacy page-local file ID `884` or mod number `396` is the required API identifier.
 4. Commit and push `.github/workflows/publish-nexus.yml`, `.github/scripts/verify-nexus-release.py`, and this guide to the downloads repository's default branch.
@@ -25,8 +25,14 @@ Future stable GitHub releases trigger automatically. Drafts, prereleases, and re
 
 After upload, record the new Nexus file/version ID and verify its actual scan and download state. API upload completion does not establish malware-review approval or public download availability.
 
-Email `support@nexusmods.com` from the author's usual support account with the mod link, exact new file link/ID, version, ZIP SHA-256, and public GitHub source/release links. Include the exact-hash VirusTotal result only when verified. Nexus's [quarantine guidance](https://help.nexusmods.com/article/117-why-has-my-mod-been-quarantined) requests a mod link and preservation of blocked files during review.
+Email `support@nexusmods.com` from the author's Yahoo account tied to Nexus (never Gmail) with the mod link, exact new file link/ID, version, ZIP SHA-256, and public GitHub source/release links. Include the exact-hash VirusTotal result only when verified. Nexus's [quarantine guidance](https://help.nexusmods.com/article/117-why-has-my-mod-been-quarantined) requests a mod link and preservation of blocked files during review.
 
-## Current preparation
+## Current setup and v1.0.6 review
 
-v1.0.6 is publicly available on both GitHub repositories; its ZIP SHA-256 is `4bd4abefdd7599ae38aa284bc57e31c86b2ce5d5f0af22623509f838c819f755`. No Nexus API secret or identifier variables were configured when this workflow was prepared. The Nexus upload, detailed page edit, and authorized support email remain pending authenticated Nexus/browser access.
+v1.0.6 is publicly available on both GitHub repositories; its ZIP is 12,503,459 bytes with SHA-256 `4bd4abefdd7599ae38aa284bc57e31c86b2ce5d5f0af22623509f838c819f755`. The same archive was uploaded to Nexus as Main/primary file [885](https://www.nexusmods.com/godofwar/mods/396?tab=files&version_history=885). The mod version, file metadata, changelog, and detailed Windows/Steam Deck installation instructions were saved and reloaded; earlier files remain archived.
+
+Repository variables are configured with the IDs copied from this new file's Advanced controls: `NEXUSMODS_FILE_ID=8108382` and `NEXUSMODS_MOD_ID=17622250815884`. `NEXUSMODS_API_KEY` is configured as an encrypted repository Actions secret. Its value must never appear in documentation, source, workflow inputs, screenshots, or logs.
+
+At the 18 October 2026 check, Nexus quarantined this exact archive and public download was unavailable. The linked [exact-hash VirusTotal report](https://www.virustotal.com/gui/file/4bd4abefdd7599ae38aa284bc57e31c86b2ce5d5f0af22623509f838c819f755) showed 1/68 detections: MaxSecure, `Trojan.Malware.300983.susgen`. These results do not establish a clean scan or malware-review approval. A manual-review request was sent once from the author's Yahoo account and verified in Sent on 18 October 2026. Nexus support review remains pending.
+
+The initial hosted `workflow_dispatch` run with `release_tag=v1.0.6` and `dry_run=true` [passed](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/39143857475), verifying the published ZIP, checksum, GitHub digest, provenance, and manifest payloads. Its summary records the exact SHA-256 and confirms no Nexus upload occurred. No real authenticated automation upload was attempted because this version already exists on Nexus; that integration boundary remains untested.
