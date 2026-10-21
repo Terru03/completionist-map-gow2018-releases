@@ -2,7 +2,7 @@
 
 A PC mod for **God of War (2018)** that adds custom collectible markers to the game's world map and compass, with completion-aware behaviour designed for a full completionist playthrough.
 
-Production build contains **551 marker records across 16 custom collectible families**. The current package is **[v1.0.6](https://github.com/Terru03/completionist-map-gow2018/releases/tag/v1.0.6)**, featuring a fix for the Caldera Hub / Cliffs of the Raven trigger exhaustion crash, universal PC compatibility across all God of War (2018) releases (Steam, Epic Games, GOG, and non-official builds like CODEX/repacks), the player-tested chest-tracking fix, and Windows 10/11 startup compatibility. [Download the release ZIP](https://github.com/Terru03/completionist-map-gow2018/releases/download/v1.0.6/CompletionistMap-v1.0.6.zip). [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files) is the mod page; scan and manual-review status are recorded in the [v1.0.6 release record](docs/releases/v1.0.6-release.md).
+Production build contains **551 marker records across 16 custom collectible families**. The current package is **[v1.0.7](https://github.com/Terru03/completionist-map-gow2018/releases/tag/v1.0.7)**, featuring the startup loader configuration fix (`mods/loader_config.toml`), the Caldera Hub / Cliffs of the Raven trigger exhaustion fix, universal PC compatibility across all God of War (2018) releases (Steam, Epic Games, GOG, and non-official builds like CODEX/repacks), the player-tested chest-tracking fix, and Windows 10/11 startup compatibility. [Download the release ZIP](https://github.com/Terru03/completionist-map-gow2018/releases/download/v1.0.7/CompletionistMap-v1.0.7.zip). [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files) is the mod page; scan and manual-review status are recorded in the [v1.0.7 release record](releases/v1.0.7.md).
 
 ## What it does
 
@@ -53,9 +53,11 @@ I do not manufacture quest progress or mark collectibles complete for the player
 
 ## Release status
 
+In v1.0.7, I fixed the startup crash ("Unable to load loader_config.toml from the mods directory") by bundling `mods/loader_config.toml` directly into the package and verifying its installation alongside `version.dll`.
+
 In v1.0.6, I fixed the fatal Lua trigger exhaustion crash (`entityvariablemessaginglibrary.lua:216: ran out of triggers!`) that occurred when entering the Cliffs of the Raven in the Lake of Nine or other areas with dense lore markers, by switching the observation lifecycle hook in `langcheckruneread.lua` to `OnPreStart` instead of the enclosing level script's `_G.OnStart`.
 
-I also retained universal PC build compatibility across all God of War (2018) PC releases (Steam, Epic Games, GOG, and non-official builds like CODEX/repacks), 100% of the proven v1.0.4 chest tracking fix (proper owner path ancestry validation for opened wooden and red/coffin chests), native Odin's Raven completion authority, real-time 3D in-world compass clearing, and Windows 10/11 compatibility layer protections with zero regressions. See the [v1.0.6 release record](docs/releases/v1.0.6-release.md).
+I also retained universal PC build compatibility across all God of War (2018) PC releases (Steam, Epic Games, GOG, and non-official builds like CODEX/repacks), 100% of the proven v1.0.4 chest tracking fix (proper owner path ancestry validation for opened wooden and red/coffin chests), native Odin's Raven completion authority, real-time 3D in-world compass clearing, and Windows 10/11 compatibility layer protections with zero regressions. See the [v1.0.7 release record](releases/v1.0.7.md).
 
 Older issues, research notes and archived probes remain in the repository as development history. They should not be interpreted as current release blockers.
 

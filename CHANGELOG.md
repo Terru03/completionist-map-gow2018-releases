@@ -2,6 +2,23 @@
 
 For the exhaustive numbered prototype list, including superseded and failed test builds, see [`docs/VERSION_HISTORY.md`](docs/VERSION_HISTORY.md).
 
+## v1.0.7 - Startup Loader Configuration Fix & Seamless 1-Click Install (2026-10-21)
+
+- **Fixed Startup Exception Crash ("Unable to load loader_config.toml")**:
+  - I resolved the crash on game launch where players on clean or fresh installations received an error dialog: `An exception has occurred on startup: Unable to load loader_config.toml from the mods directory. Permission denied or file doesn't exist.`
+  - **Root Cause**: GoW Script Loader (`version.dll` by Nukem9) requires `mods/loader_config.toml` at startup to parse configuration options. Although `version.dll` was bundled in `prerequisites/` and installed automatically by `Install.bat` in v1.0.6, `mods/loader_config.toml` was omitted from the packaged ZIP, causing `version.dll` to abort initialization and crash `GoW.exe`.
+  - **Resolution**: I added `mods/loader_config.toml` directly into the package payload and `prerequisites/` with safe, clean player defaults (`EnableDebugMenu = false`, `SkipIntroLogos = true`, `LoadScripts = true`, `FileLogLevel = "off"`).
+  - I updated `scripts/install.ps1` and `Install-SteamDeck.sh` to automatically install and verify `mods/loader_config.toml` alongside `version.dll`.
+- **Zero-Friction 1-Click Install**:
+  - Players can extract the ZIP, run `Install.bat`, and immediately boot God of War with no missing files or manual intervention needed.
+- **Retained All v1.0.6 Improvements (Zero Regressions)**:
+  - Caldera Hub / Cliffs of the Raven trigger exhaustion fix (`OnPreStart` lifecycle hook in `langcheckruneread.lua`).
+  - Windows UAC Administrator elevation for protected folders (`C:\Program Files (x86)\...`).
+  - Full Steam Deck / Linux Proton support (`Install-SteamDeck.sh`).
+  - Universal PC compatibility across Steam, Epic Games, GOG, and unofficial builds.
+  - Verified chest tracking ancestry validation for opened wooden and red/coffin chests.
+  - Odin's Raven native authority tracking and real-time 3D compass waypoint clearing.
+
 ## v1.0.6 - Caldera Hub / Cliffs of the Raven Trigger Exhaustion Fix & Universal Multi-Device Support (2026-10-15)
 
 - **Automated Prerequisite Check & Installer (version.dll)**: I updated the 1-click installer to automatically check whether GoW Script Loader (`version.dll`) is present in the God of War game directory. If missing, it automatically installs the bundled `version.dll` from `prerequisites/`, ensuring loose Lua scripts load reliably and pins disappear from the map when collected.

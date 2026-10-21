@@ -1,0 +1,124 @@
+name: Publish release to Nexus Mods
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Published stable release tag
+        required: true
+        default: v1.0.7
+        type: string
+      dry_run:
+        description: Verify the release without uploading to Nexus Mods
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nexus-publishing
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      github.repository == 'Terru03/completionist-map-gow2018-releases' &&
+      (github.event_name == 'workflow_dispatch' || !github.event.release.prerelease)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Download published release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo 'A stable release tag such as v1.0.6 is required.' >&2
+            exit 1
+          fi
+          release_directory="$RUNNER_TEMP/nexus-release"
+          mkdir -p "$release_directory"
+          gh release view "$RELEASE_TAG" --json tagName,isDraft,isPrerelease,body,assets > "$release_directory/release.json"
+          gh release download "$RELEASE_TAG" --dir "$release_directory" \
+            --pattern "CompletionistMap-$RELEASE_TAG.zip" \
+            --pattern "CompletionistMap-$RELEASE_TAG.sha256.txt" \
+            --pattern "CompletionistMap-$RELEASE_TAG.provenance.json"
+
+      - name: Verify exact release package
+        id: package
+        run: python3 .github/scripts/verify-nexus-release.py "$RELEASE_TAG" "$RUNNER_TEMP/nexus-release"
+
+      - name: Check Nexus configuration and existing versions
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        env:
+          NEXUSMODS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY }}
+          NEXUSMODS_FILE_ID: ${{ vars.NEXUSMODS_FILE_ID }}
+          NEXUSMODS_MOD_ID: ${{ vars.NEXUSMODS_MOD_ID }}
+          RELEASE_VERSION: ${{ steps.package.outputs.version }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+
+          for name in ("NEXUSMODS_API_KEY", "NEXUSMODS_FILE_ID", "NEXUSMODS_MOD_ID"):
+              if not os.environ.get(name, "").strip():
+                  raise SystemExit(f"Configure {name} in this repository before publishing.")
+          file_id = urllib.parse.quote(os.environ["NEXUSMODS_FILE_ID"].strip(), safe="")
+          request = urllib.request.Request(
+              f"https://api.nexusmods.com/v3/mod-files/{file_id}/versions",
+              headers={"apikey": os.environ["NEXUSMODS_API_KEY"], "Accept": "application/json"},
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              versions = json.load(response)["data"]["versions"]
+          if any(item["version"] == os.environ["RELEASE_VERSION"] for item in versions):
+              raise SystemExit("This version already exists on Nexus. Inspect it instead of creating a duplicate.")
+          PY
+
+      - name: Upload verified package to Nexus Mods
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        id: nexus
+        uses: Nexus-Mods/upload-action@98532f7670c27cbecc78fae03fa3e278147827e2
+        with:
+          api_key: ${{ secrets.NEXUSMODS_API_KEY }}
+          file_id: ${{ vars.NEXUSMODS_FILE_ID }}
+          mod_id: ${{ vars.NEXUSMODS_MOD_ID }}
+          filename: ${{ steps.package.outputs.filename }}
+          version: ${{ steps.package.outputs.version }}
+          display_name: ${{ steps.package.outputs.display_name }}
+          description: ${{ steps.package.outputs.description }}
+          changelog: ${{ steps.package.outputs.changelog }}
+          category: main
+          archive_existing_version: true
+          primary_mod_manager_download: true
+          allow_mod_manager_download: true
+          update_mod_version: true
+
+      - name: Record result
+        env:
+          NEXUS_VERSION_ID: ${{ steps.nexus.outputs.version_id }}
+          RELEASE_SHA256: ${{ steps.package.outputs.sha256 }}
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          version_id = os.environ["NEXUS_VERSION_ID"]
+          result = f"Nexus file version ID: {version_id}" if version_id else "Dry run: package verified; no Nexus upload."
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as summary:
+              summary.write(f"{result}\n\nSHA-256: `{os.environ['RELEASE_SHA256']}`\n")
+              if version_id:
+                  summary.write("\nNexus malware review and public download availability still require verification.\n")
+          PY
