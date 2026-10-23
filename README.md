@@ -17,6 +17,9 @@ game state; no save-file or progression edits.
 - Retain v1.0.7 native DLLs, bundled Script Loader/config, installers, marker
   artwork, Caldera Hub trigger fix and earlier chest owner checks.
 
+Nexus v1.0.8 upload complete; file quarantined by automated checks and download
+blocked pending review. GitHub release published.
+
 Offline regressions and package checks passed. Affected player NG/NG+ saves
 unavailable; live player validation still needed. Startup black-screen, ReShade
 and antivirus reports remain separate issues. No new scanner clearance claimed.

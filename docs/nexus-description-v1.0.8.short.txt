@@ -1,0 +1,1 @@
+Completion-aware map and compass pins for 551 marker records across 16 families. Native filters, custom icons and distance tracking. v1.0.8 fixes save-load, Raven and chest tracking. No save edits.

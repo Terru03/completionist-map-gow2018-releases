@@ -49,3 +49,15 @@ Automatic workflow updates Main download, primary file, mod version and changelo
 Detailed mod description remains separate page edit; action has no such input.
 Nexus scan/public download state must be read after upload. No malware-review
 approval inferred from workflow success.
+
+### v1.0.8 upload result
+
+Release-triggered [run 39934673287](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/39934673287)
+passed on 23 October 2026. All verification, configuration and upload steps
+succeeded. Uploaded API version ID: `17622250816378`; legacy Nexus file:
+[890](https://www.nexusmods.com/godofwar/mods/396?tab=files&version_history=890).
+Main download and mod header both read v1.0.8 after refresh.
+
+Short and full descriptions saved separately from committed v1.0.8 text and
+verified on public page. Automatic file checks then quarantined new file;
+Nexus download blocked pending review. No support email sent by this release.
