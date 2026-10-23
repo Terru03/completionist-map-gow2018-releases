@@ -15,9 +15,9 @@ The personal key must belong to the mod author or an authorized mod-page team me
 
 ## First run and existing releases
 
-Use **Actions → Publish release to Nexus Mods → Run workflow** with `release_tag=v1.0.6` and `dry_run=true` first. This validates the published package without requiring Nexus credentials or uploading a file.
+Use **Actions → Publish release to Nexus Mods → Run workflow** with `release_tag=v1.0.8` and `dry_run=true` first. This validates the published package without requiring Nexus credentials or uploading a file.
 
-For an actual upload, set `dry_run=false`. The workflow checks Nexus's existing file versions before uploading and stops if the requested version already exists. If v1.0.6 was uploaded manually, inspect that existing file rather than creating another v1.0.6 upload. The guard also prevents a second upload if the first run created the file but subsequently failed while adding the changelog.
+For an actual upload, set `dry_run=false`. The workflow checks Nexus's existing file versions before uploading and stops if the requested version already exists. If requested version already exists, inspect that file rather than creating duplicate upload. The guard also prevents a second upload if the first run created the file but subsequently failed while adding the changelog.
 
 Future stable GitHub releases trigger automatically. Drafts, prereleases, and releases from forks do not upload. Publishing this workflow does not retrospectively trigger already published releases.
 
@@ -35,4 +35,17 @@ Repository variables are configured with the IDs copied from this new file's Adv
 
 At the 18 October 2026 check, Nexus quarantined this exact archive and public download was unavailable. The linked [exact-hash VirusTotal report](https://www.virustotal.com/gui/file/4bd4abefdd7599ae38aa284bc57e31c86b2ce5d5f0af22623509f838c819f755) showed 1/68 detections: MaxSecure, `Trojan.Malware.300983.susgen`. These results do not establish a clean scan or malware-review approval. A manual-review request was sent once from the author's Yahoo account and verified in Sent on 18 October 2026. Nexus support review remains pending.
 
-The initial hosted `workflow_dispatch` run with `release_tag=v1.0.6` and `dry_run=true` [passed](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/39143857475), verifying the published ZIP, checksum, GitHub digest, provenance, and manifest payloads. Its summary records the exact SHA-256 and confirms no Nexus upload occurred. No real authenticated automation upload was attempted because this version already exists on Nexus; that integration boundary remains untested.
+The initial hosted `workflow_dispatch` run with `release_tag=v1.0.8` and `dry_run=true` [passed](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/39143857475), verifying the published ZIP, checksum, GitHub digest, provenance, and manifest payloads. Its summary records the exact SHA-256 and confirms no Nexus upload occurred. No real authenticated automation upload was attempted because this version already exists on Nexus; that was the state at the v1.0.6 setup check. The authenticated v1.0.7 release-triggered [run](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/39558018867) later completed verification and Nexus upload successfully.
+
+## v1.0.8 release
+
+Release date: 2026-10-23. Stable GitHub release triggers existing upload workflow.
+ZIP, README, changelog, checksum and provenance updated. All 21 game payloads
+match verified save-state candidate; v1.0.7 native binaries retained.
+
+SHA-256: `540626ace11b33b610f6dfb6e327966013ad02f864e8c013efa11bab2d72c25b`.
+
+Automatic workflow updates Main download, primary file, mod version and changelog.
+Detailed mod description remains separate page edit; action has no such input.
+Nexus scan/public download state must be read after upload. No malware-review
+approval inferred from workflow success.

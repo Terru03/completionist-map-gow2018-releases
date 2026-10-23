@@ -8,7 +8,7 @@ on:
       release_tag:
         description: Published stable release tag
         required: true
-        default: v1.0.7
+        default: v1.0.8
         type: string
       dry_run:
         description: Verify the release without uploading to Nexus Mods

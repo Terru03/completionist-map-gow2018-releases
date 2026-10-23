@@ -1,0 +1,32 @@
+Completionist Map v1.0.8 - Save-load, Raven and chest tracking fixes
+Released 2026-10-23
+
+- Fix map/native restore epoch drift after repeated load callbacks or loads
+  with no Raven script nearby. Read and use native bridge acknowledgement.
+- Retry failed boundary notes; retain loading barrier and matching post-load
+  capture before replacing previous save's Raven evidence.
+- Keep known Raven states usable when another region or bonus Raven cannot
+  resolve. Unknown Raven pins stay hidden; no guesses for mixed groups.
+- Restore independent chest-reader readiness even if Raven totals unresolved.
+- Preserve current-save event evidence, exact identity checks, stock game
+  scripts outside changed blocks and existing Nornir boundary integration.
+- Retain v1.0.7 native DLLs, game assets, Script Loader/config and installers.
+
+Verification
+- Automated Lua, state, package and installer checks passed.
+- Native Release build and 13 native checks passed.
+- Packaged Lua compiled on Lua 5.1 and Lua 5.2.
+- Full install, repeat install and uninstall checked in isolated temporary tree.
+- All 21 game payloads match tested save-state candidate; no save writes.
+- Affected player NG/NG+ saves unavailable. Live player checks still needed.
+
+Known limits
+- Unknown Raven pins remain hidden until state can be resolved.
+- Startup black-screen, ReShade and antivirus reports remain unresolved by
+  this release. No new scanner clearance or universal compatibility claim.
+
+Install/update
+Close game. Fully extract CompletionistMap-v1.0.8.zip, keep existing
+completionist_backup folder, then run Install.bat.
+Steam Deck/Linux: bash Install-SteamDeck.sh "/path/to/GodOfWar"
+Proton: WINEDLLOVERRIDES="dxgi,version=n,b" %command%

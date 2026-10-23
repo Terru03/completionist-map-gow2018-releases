@@ -1,0 +1,49 @@
+[size=6][b]Completionist Map v1.0.8[/b][/size]
+
+551 collectible marker records across 16 families, on in-game World Map and Compass HUD. Custom icons, native map filters and completion-aware tracking. Read-only game-state checks; no save edits.
+
+[size=4][b]New in v1.0.8[/b][/size]
+[list]
+[*]Fix save-load state drift that could leave Raven pins missing and chest tracking waiting after a reload.
+[*]Keep known Raven pins when other states unresolved. Unknown Raven pins stay hidden; no guesses for mixed groups.
+[*]Let chest tracking run even when Raven region totals cannot be resolved.
+[*]Retain v1.0.7 native DLLs, game assets, bundled Script Loader/config, Windows and Steam Deck installers, earlier Caldera Hub trigger fix and chest owner checks.
+[/list]
+
+[size=4][b]Collectibles and controls[/b][/size]
+Odin's Ravens; Nornir Chests, Seals, Bells and Mechanisms; Legendary, Cipher, Wooden and Red/Coffin Chests; Artefacts; Jotnar Shrines; Lore Markers and Scrolls; Realm Tears; Treasure Maps and Dig Sites.
+
+Use native map filters to choose families. Hover custom pin and press [Enter] / [E] to add, replace or remove compass target. Press [Down Arrow] in map to show/hide custom pins. Base-game Valkyries, gateways and shops kept; no duplicate custom pins.
+
+[size=4][b]Windows install / update[/b][/size]
+[list=1]
+[*]Close God of War. Extract CompletionistMap-v1.0.8.zip fully; do not run from inside ZIP.
+[*]Keep existing completionist_backup folder when updating.
+[*]Run Install.bat. Select game folder if asked; allow UAC if needed.
+[*]Launch game and open map. No save conversion needed.
+[/list]
+Installer checks payload hashes, backs up affected files, installs missing version.dll and mods/loader_config.toml, then registers artwork. Existing Script Loader preserved.
+
+[size=4][b]Steam Deck / Linux[/b][/size]
+Extract ZIP in Desktop Mode, then run:
+[code]bash Install-SteamDeck.sh "/path/to/GodOfWar"[/code]
+Steam Launch Options:
+[code]WINEDLLOVERRIDES="dxgi,version=n,b" %command%[/code]
+
+[size=4][b]Manual / mod managers[/b][/size]
+Copy dxgi.dll, exec/ and mods/ beside GoW.exe. Copy prerequisites/version.dll if missing. Keep mods/loader_config.toml with [Lua] LoadScripts = true. Back up exec/boot-options.json; add ../../patch/pc_le/completionist_v105_family_art to existing patch-texpacks array, keeping other entries. Full steps in README.txt.
+
+[size=4][b]NG, NG+ and verification[/b][/size]
+Both use same current-save tracking path. Unknown Raven pins stay hidden until exact evidence or unique constraints resolve them. Prior Raven display may remain while matching load capture waits.
+
+220 automated Lua/state/package/installer checks and 13 native checks passed. Full install, repeat install and uninstall checked in isolated temporary tree. Affected player NG/NG+ saves unavailable; live player checks still needed. No universal game-build/device compatibility claim.
+
+[size=4][b]Known limits / support[/b][/size]
+Startup black-screen, ReShade and antivirus reports remain separate issues; v1.0.8 retains v1.0.7 native binaries. Other mods must not replace our dxgi.dll or same map assets. No new scanner clearance claimed; see Nexus file scan/review state.
+
+For faults: include game build, Windows/Proton version, NG/NG+ state, exact area, chest type and steps. Keep mods/completionist-map/native/raven-native-bridge.log.
+
+[size=4][b]Uninstall[/b][/size]
+Windows: Uninstall.bat. Steam Deck/Linux: bash Uninstall-SteamDeck.sh "/path/to/GodOfWar". Manual/mod-manager installs: restore stock files and original boot JSON from backup, or use game launcher's file verification. Keep saves intact.
+
+Author: Terru03. Script Loader foundation: Nukem9.
