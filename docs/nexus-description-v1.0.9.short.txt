@@ -1,0 +1,1 @@
+Completion-aware map and compass pins for 551 records across 16 families. v1.0.9 preserves existing ReShade and shared mod settings through Windows installer. ReShade not bundled or required. No save edits.

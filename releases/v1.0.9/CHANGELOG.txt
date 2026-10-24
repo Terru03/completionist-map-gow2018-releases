@@ -1,0 +1,23 @@
+Completionist Map v1.0.9 - 2026-10-25
+
+Windows mod compatibility and safe install/remove:
+- Keep existing ReShade through d3d11.dll. Preserve preset and shader files.
+  ReShade and GOW REGRADE not included; no new download required by our mod.
+- Recover ReShade from verified older Completionist backup when available.
+- Preserve shared Script Loader settings; only enable Lua scripts when needed.
+- Stop before payload writes when unknown dxgi.dll, occupied d3d11.dll or
+  overlapping Lua/native/art files cannot be preserved safely.
+- Preserve later changes to shared boot options and loader settings on remove.
+- Keep changed files from other mods and original backups; verify backup hashes.
+- Reject invalid existing backups and unsafe shared-config merges before writes.
+- Retain all 21 v1.0.8 game payloads, native DLLs, Script Loader prerequisite,
+  save-load Raven/chest fixes, map artwork and one-click install.
+
+Windows installer checks used real official ReShade 6.8.0 in temporary trees.
+Hardware D3D11/ReShade probe checked separately. Full GoW + GOW REGRADE session
+not tested. Automatic repair applies to Windows installer only. Steam Deck /
+Linux scripts retain prior behavior. Use Windows installer for automatic repair.
+
+Other mods changing same game archives/assets can still need a merged patch.
+Installer cannot prove arbitrary runtime compatibility. No antivirus clearance
+claimed; Nexus scan/review status separate from release tests. No save edits.

@@ -15,7 +15,7 @@ The personal key must belong to the mod author or an authorized mod-page team me
 
 ## First run and existing releases
 
-Use **Actions → Publish release to Nexus Mods → Run workflow** with `release_tag=v1.0.8` and `dry_run=true` first. This validates the published package without requiring Nexus credentials or uploading a file.
+Use **Actions Ã¢â€ â€™ Publish release to Nexus Mods Ã¢â€ â€™ Run workflow** with `release_tag=v1.0.8` and `dry_run=true` first. This validates the published package without requiring Nexus credentials or uploading a file.
 
 For an actual upload, set `dry_run=false`. The workflow checks Nexus's existing file versions before uploading and stops if the requested version already exists. If requested version already exists, inspect that file rather than creating duplicate upload. The guard also prevents a second upload if the first run created the file but subsequently failed while adding the changelog.
 
@@ -61,3 +61,16 @@ Main download and mod header both read v1.0.8 after refresh.
 Short and full descriptions saved separately from committed v1.0.8 text and
 verified on public page. Automatic file checks then quarantined new file;
 Nexus download blocked pending review. No support email sent by this release.
+
+## v1.0.9 release
+
+Windows installer compatibility and safe removal. ReShade/presets not bundled.
+All 21 installed game payloads and native DLLs remain v1.0.8. Stable ZIP:
+12,518,483 bytes, SHA-256
+`e0a7f78f773860dd5e129c1ef83222969eb011fdb826f5361994c9f325249913`.
+
+277 Python/Lua/real PowerShell/package checks, 13 native CTests and one hardware
+D3D11/ReShade probe passed. Full GoW/preset and Proton migration unverified.
+Release publication triggers existing workflow; page descriptions saved from
+`docs/nexus-description-v1.0.9.*.txt`. Record upload/version ID and actual scan
+state after workflow. No review approval inferred from upload success.

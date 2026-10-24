@@ -1,39 +1,36 @@
 # Completionist Map for God of War (2018)
 
-Current release: **[v1.0.8](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.8)** — save-load, Raven and chest tracking fixes.
-[Download ZIP](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.8/CompletionistMap-v1.0.8.zip) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files)
+Current release: **[v1.0.9](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.9)** — Windows mod compatibility and safe install/remove.
+[Download ZIP](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.9/CompletionistMap-v1.0.9.zip) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files)
 
 551 collectible marker records across 16 families, shown on in-game map and
 compass with custom icons and native category filters. Completion tracking reads
 game state; no save-file or progression edits.
 
-## Changes in v1.0.8
+## Changes in v1.0.9
 
-- Fix restore epoch drift after repeated load callbacks or loads without nearby
-  Raven scripts. Use confirmed native epoch for post-load captures.
-- Keep known Raven states when other states unresolved. Unknown pins stay hidden;
-  regional totals never guess identities in mixed groups.
-- Let chest tracking run even when Raven region totals cannot be resolved.
-- Retain v1.0.7 native DLLs, bundled Script Loader/config, installers, marker
-  artwork, Caldera Hub trigger fix and earlier chest owner checks.
+- Windows installer keeps existing ReShade through `d3d11.dll`; preset and
+  shader files kept. ReShade and presets not bundled or required.
+- Preserve shared Script Loader options; enable Lua scripts only when needed.
+- Stop unsafe DLL and Lua/native/art overlaps before payload writes.
+- On remove, keep later mods' file changes, loader options and boot entries;
+  retain original backup when safe restore cannot be proved.
+- Keep all 21 v1.0.8 game payloads, native DLLs, save-load Raven/chest fixes and
+  bundled Script Loader. One-click install retained.
 
-Nexus v1.0.8 upload complete; file quarantined by automated checks and download
-blocked pending review. GitHub release published.
-
-Offline regressions and package checks passed. Affected player NG/NG+ saves
-unavailable; live player validation still needed. Startup black-screen, ReShade
-and antivirus reports remain separate issues. No new scanner clearance claimed.
+Nexus upload uses release workflow. Public availability depends on current
+Nexus file review. No antivirus clearance claimed.
 
 ## Install or update
 
-1. Close God of War. Fully extract `CompletionistMap-v1.0.8.zip`.
+1. Close God of War. Fully extract `CompletionistMap-v1.0.9.zip`.
 2. Keep existing `completionist_backup` folder when updating.
 3. Windows: run `Install.bat`. Select game folder if asked; allow UAC if needed.
 4. Launch game and open map. No save conversion needed.
 
 Installer verifies payload hashes, backs up stock files, installs missing
 `version.dll` and `mods/loader_config.toml`, then registers marker artwork.
-Existing Script Loader preserved.
+Existing Script Loader and user options preserved. Lua enabled when needed.
 
 Steam Deck / Linux, in Desktop Mode:
 
@@ -68,10 +65,18 @@ Scrolls; Realm Tears; Treasure Maps and Dig Sites.
 
 ## Compatibility and support
 
-Windows 10/11 x64 and SteamOS/Linux through Proton are intended targets. Game
-hash checks remain non-blocking across PC builds; this does not prove every
-build, device or driver works. Keep our `dxgi.dll`; another mod using same DLL
-name or map assets can conflict. ReShade conflict remains under investigation.
+Windows automatic ReShade handling uses existing installed DLL only. If
+ReShade setup/update replaces `dxgi.dll`, rerun `Install.bat`. Unknown DXGI,
+occupied D3D11 and overlapping Lua/native/art files stop install safely.
+Shared game archives/map assets still need mod-specific merged patches.
+Arbitrary runtime compatibility cannot be proved by installer checks.
+
+Real ReShade 6.8.0 checked in isolated Windows install/remove tests; hardware
+D3D11 probe confirmed runtime creation. Full GoW + GOW REGRADE session untested.
+Game hash checks non-blocking; this does not prove every game build/device works.
+Steam Deck/Linux scripts retain prior behavior; new safeguards and automatic
+ReShade repair apply only to Windows installer. Back up existing mods on Proton
+or manual installs. Affected player NG/NG+ saves unavailable for live checks.
 
 For faults: include game build, Windows/Proton version, NG/NG+ state, exact area,
 chest type and steps. Keep
@@ -84,4 +89,4 @@ Windows: `Uninstall.bat`. Steam Deck/Linux:
 Manual/mod-manager installs: restore stock files and original boot JSON from
 backup, or use game launcher's file verification. Keep saves intact.
 
-[Release notes and verification](releases/v1.0.8.md).
+[Release notes and verification](releases/v1.0.9.md).

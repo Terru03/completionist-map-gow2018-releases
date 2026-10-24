@@ -2,6 +2,30 @@
 
 For the exhaustive numbered prototype list, including superseded and failed test builds, see [`docs/VERSION_HISTORY.md`](docs/VERSION_HISTORY.md).
 
+## v1.0.9 - Windows mod compatibility and safe install/remove (2026-10-25)
+
+- Preserve existing ReShade through D3D11; no ReShade/preset/shader bundling.
+- Keep shared Script Loader settings; enable Lua without replacing other options.
+- Reject unknown DLL and same-path Lua/native/art overlaps before payload writes.
+- Preserve later mod edits and boot entries on remove. Verify originals; retain
+  recovery backups when files changed after install.
+- Keep every v1.0.8 game payload and native DLL unchanged.
+- Windows installer change only. Full game/preset and Proton compatibility
+  unverified; shared game archives may still need merged patches.
+
+## v1.0.8 - Save-load, Raven and chest tracking fixes (2026-10-23)
+
+- Use acknowledged native restore epoch across repeated load callbacks and loads
+  without nearby Raven scripts. Retry failed boundary notes.
+- Keep known Raven states usable while ambiguous or bonus states remain unknown.
+  Unknown pins stay hidden; no mixed-group identity guesses.
+- Restore independent chest-reader readiness when Raven totals unresolved.
+- Retain all 21 game payloads from verified save-state candidate, including
+  v1.0.7 native DLLs, game assets, Script Loader/config and installers.
+- Update packaged/repository README, release notes, checksum and provenance.
+- Offline regressions passed; affected player NG/NG+ validation still pending.
+  Startup black-screen, ReShade and antivirus reports remain unresolved.
+
 ## v1.0.7 - Startup Loader Configuration Fix & Seamless 1-Click Install (2026-10-21)
 
 - **Fixed Startup Exception Crash ("Unable to load loader_config.toml")**:
