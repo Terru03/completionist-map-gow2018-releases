@@ -175,6 +175,13 @@ class DescriptionSyncTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'read-back'):
             self.run_sync()
 
+    def test_mismatch_prefix_never_leaks_partial_key(self):
+        self.state['ignore_patch'] = True
+        self.state['mod']['description'] = 'A' * 150 + 'fake-test-key'
+        with self.assertRaises(RuntimeError) as error:
+            self.run_sync()
+        self.assertNotIn('fake-test', str(error.exception))
+
     def test_bad_tag_or_blank_text_rejected(self):
         with self.assertRaises(ValueError):
             self.sync.prepare_payload(self.root, '../secret')

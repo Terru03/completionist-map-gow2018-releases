@@ -100,7 +100,7 @@ def sync_description(tag, environment, root=ROOT):
             facts = {'expected_sha256': sha(payload['description']), 'actual_sha256': sha(actual),
                      'expected_length': len(payload['description']), 'actual_length': len(actual),
                      'summary_matches': ' '.join(str(page.get('summary', '')).split()) == payload['summary'],
-                     'description_prefix': actual[:160].replace(client.api_key, '[redacted]')}
+                     'description_prefix': actual.replace(client.api_key, '[redacted]')[:160]}
             raise RuntimeError('Nexus page read-back did not match committed text: ' + json.dumps(facts))
     return {'version': tag[1:], 'version_id': matches[0]['id'],
             'legacy_file_id': matches[0]['game_scoped_id'], 'verified': True,
