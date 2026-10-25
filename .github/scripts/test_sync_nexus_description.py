@@ -43,7 +43,8 @@ class DescriptionSyncTests(unittest.TestCase):
         self.state = {'mod': {'mod_id': 396, 'version': '1.0.9', 'summary': 'old', 'description': 'old'},
                       'versions': [{'id': '17622250816380', 'game_scoped_id': '891', 'version': '1.0.9',
                                     'category': 'main', 'is_primary': True}],
-                      'patches': [], 'redirect': False, 'sink': 0, 'ignore_patch': False, 'deny': False}
+                      'patches': [], 'redirect': False, 'sink': 0, 'ignore_patch': False, 'deny': False,
+                      'legacy_breaks': False}
         state = self.state
 
         class Handler(BaseHTTPRequestHandler):
@@ -70,7 +71,10 @@ class DescriptionSyncTests(unittest.TestCase):
                     else:
                         self.reply(200, {'data': {'versions': state['versions']}})
                 elif self.path == '/v1/games/godofwar/mods/396.json':
-                    self.reply(200, state['mod'])
+                    page = dict(state['mod'])
+                    if state['legacy_breaks']:
+                        page['description'] = page['description'].replace('\n', '\n<br />')
+                    self.reply(200, page)
                 else:
                     self.reply(404, {})
 
@@ -113,6 +117,16 @@ class DescriptionSyncTests(unittest.TestCase):
 
     def test_repeat_sync_does_not_patch_unchanged_text(self):
         self.run_sync()
+        self.run_sync()
+        self.assertEqual(len(self.state['patches']), 1)
+
+    def test_v1_newline_display_encoding_verifies_without_repeat_patch(self):
+        self.state['legacy_breaks'] = True
+        try:
+            result = self.run_sync()
+        except RuntimeError as error:
+            self.fail(str(error))
+        self.assertTrue(result['verified'])
         self.run_sync()
         self.assertEqual(len(self.state['patches']), 1)
 
@@ -160,6 +174,13 @@ class DescriptionSyncTests(unittest.TestCase):
         self.state['ignore_patch'] = True
         with self.assertRaisesRegex(RuntimeError, 'read-back'):
             self.run_sync()
+
+    def test_mismatch_prefix_never_leaks_partial_key(self):
+        self.state['ignore_patch'] = True
+        self.state['mod']['description'] = 'A' * 150 + 'fake-test-key'
+        with self.assertRaises(RuntimeError) as error:
+            self.run_sync()
+        self.assertNotIn('fake-test', str(error.exception))
 
     def test_bad_tag_or_blank_text_rejected(self):
         with self.assertRaises(ValueError):

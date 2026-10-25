@@ -7,7 +7,8 @@ The workflow downloads the existing GitHub release ZIP, checksum, and provenance
 Page text comes from `docs/nexus-description-vX.Y.Z.short.txt` and
 `docs/nexus-description-vX.Y.Z.bbcode.txt`. Text validates before upload. After
 upload, sync uses `PATCH /v3/mods/{id}` with only `summary` and `description`,
-then reads page text back through v1 and checks exact values. This endpoint is
+then reads page text back through v1 and checks exact text, allowing v1's added
+`<br />` display tags after newlines. This endpoint is
 experimental in the [official schema](https://github.com/Nexus-Mods/Vortex/blob/master/packages/nexus-api-v3/schema/openapi.yaml)
 (schema blob `a43fdf81df4b44b9af52587248ffbce2c824aec5` checked 2026-10-25).
 Same repository secret used; key never enters logs or browser. Redirects rejected.

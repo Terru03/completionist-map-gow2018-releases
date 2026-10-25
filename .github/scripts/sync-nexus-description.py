@@ -59,8 +59,11 @@ class NexusClient:
 
 
 def page_matches(page, payload):
+    # v1 adds <br /> after each newline. Keep both exact encodings.
+    description = str(page.get('description', '')).replace('\r\n', '\n').strip()
+    expected = payload['description']
     return (' '.join(str(page.get('summary', '')).split()) == payload['summary'] and
-            str(page.get('description', '')).replace('\r\n', '\n').strip() == payload['description'])
+            description in (expected, expected.replace('\n', '\n<br />')))
 
 
 def make_client(environment):
@@ -93,7 +96,12 @@ def sync_description(tag, environment, root=ROOT):
             if attempt < 2:
                 time.sleep(2)
         else:
-            raise RuntimeError('Nexus page read-back did not match committed text.')
+            actual = str(page.get('description', '')).replace('\r\n', '\n').strip()
+            facts = {'expected_sha256': sha(payload['description']), 'actual_sha256': sha(actual),
+                     'expected_length': len(payload['description']), 'actual_length': len(actual),
+                     'summary_matches': ' '.join(str(page.get('summary', '')).split()) == payload['summary'],
+                     'description_prefix': actual.replace(client.api_key, '[redacted]')[:160]}
+            raise RuntimeError('Nexus page read-back did not match committed text: ' + json.dumps(facts))
     return {'version': tag[1:], 'version_id': matches[0]['id'],
             'legacy_file_id': matches[0]['game_scoped_id'], 'verified': True,
             'summary_sha256': sha(payload['summary']), 'description_sha256': sha(payload['description'])}
