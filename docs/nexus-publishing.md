@@ -2,7 +2,15 @@
 
 The prepared workflow uses the official [Nexus Mods upload action](https://github.com/Nexus-Mods/upload-action), pinned to `v1.0.0-beta.11`'s commit. Its automatic trigger is a newly published stable release in this downloads repository. The source repository must not also upload to Nexus, because both repositories publish the same package.
 
-The workflow downloads the existing GitHub release ZIP, checksum, and provenance. It verifies the exact archive bytes and all manifest payloads, then uploads that ZIP without rebuilding or repacking it. The previous Nexus version is archived, the new file becomes the primary Main download, and the mod version and changelog are updated. The detailed mod description still requires a separate page edit.
+The workflow downloads the existing GitHub release ZIP, checksum, and provenance. It verifies the exact archive bytes and all manifest payloads, then uploads that ZIP without rebuilding or repacking it. The previous Nexus version is archived, the new file becomes the primary Main download, and the mod version and changelog are updated. Versioned Git files now also update the page summary and full BBCode description through the official Nexus API; no browser edit needed.
+
+Page text comes from `docs/nexus-description-vX.Y.Z.short.txt` and
+`docs/nexus-description-vX.Y.Z.bbcode.txt`. Text validates before upload. After
+upload, sync uses `PATCH /v3/mods/{id}` with only `summary` and `description`,
+then reads page text back through v1 and checks exact values. This endpoint is
+experimental in the [official schema](https://github.com/Nexus-Mods/Vortex/blob/master/packages/nexus-api-v3/schema/openapi.yaml)
+(schema blob `a43fdf81df4b44b9af52587248ffbce2c824aec5` checked 2026-10-25).
+Same repository secret used; key never enters logs or browser. Redirects rejected.
 
 ## One-time configuration
 
@@ -20,6 +28,13 @@ Use **Actions Ã¢â€ â€™ Publish release to Nexus Mods Ã¢â€ â€
 For an actual upload, set `dry_run=false`. The workflow checks Nexus's existing file versions before uploading and stops if the requested version already exists. If requested version already exists, inspect that file rather than creating duplicate upload. The guard also prevents a second upload if the first run created the file but subsequently failed while adding the changelog.
 
 Future stable GitHub releases trigger automatically. Drafts, prereleases, and releases from forks do not upload. Publishing this workflow does not retrospectively trigger already published releases.
+
+For page-text updates after a file already uploaded, dispatch with
+`release_tag=v1.0.9`, `dry_run=false`, `description_only=true`. Exact GitHub
+release package still verifies, but file upload and additive changelog are
+skipped. Existing Nexus file/version and current page version must match.
+Repeat sync skips unchanged text. No duplicate file or changelog entry created.
+Keep `description_only=false` for normal release uploads.
 
 ## Review request
 
