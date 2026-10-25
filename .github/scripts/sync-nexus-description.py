@@ -59,8 +59,11 @@ class NexusClient:
 
 
 def page_matches(page, payload):
+    # v1 adds <br /> after each newline. Keep both exact encodings.
+    description = str(page.get('description', '')).replace('\r\n', '\n').strip()
+    expected = payload['description']
     return (' '.join(str(page.get('summary', '')).split()) == payload['summary'] and
-            str(page.get('description', '')).replace('\r\n', '\n').strip() == payload['description'])
+            description in (expected, expected.replace('\n', '\n<br />')))
 
 
 def make_client(environment):
