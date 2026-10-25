@@ -63,8 +63,7 @@ def page_matches(page, payload):
             str(page.get('description', '')).replace('\r\n', '\n').strip() == payload['description'])
 
 
-def sync_description(tag, environment, root=ROOT):
-    payload = prepare_payload(root, tag)
+def make_client(environment):
     if environment.get('NEXUSMODS_MOD_ID', '').strip() != MOD_ID or environment.get('NEXUSMODS_FILE_ID', '').strip() != FILE_ID:
         raise ValueError('Nexus target must be Completionist Map mod 396 and its configured file.')
     key = environment.get('NEXUSMODS_API_KEY', '').strip()
@@ -72,7 +71,12 @@ def sync_description(tag, environment, root=ROOT):
         raise ValueError('NEXUSMODS_API_KEY missing.')
     if any(ord(character) < 33 or ord(character) > 126 for character in key):
         raise ValueError('NEXUSMODS_API_KEY contains invalid header characters.')
-    client = NexusClient(key)
+    return NexusClient(key)
+
+
+def sync_description(tag, environment, root=ROOT):
+    payload = prepare_payload(root, tag)
+    client = make_client(environment)
     versions = client.request('GET', f'/v3/mod-files/{FILE_ID}/versions')['data']['versions']
     matches = [version for version in versions if version['version'] == tag[1:]]
     if len(matches) != 1:

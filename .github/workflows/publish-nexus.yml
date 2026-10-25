@@ -76,21 +76,15 @@ jobs:
           RELEASE_VERSION: ${{ steps.package.outputs.version }}
         run: |
           python3 - <<'PY'
-          import json
           import os
-          import urllib.parse
-          import urllib.request
+          import runpy
 
           for name in ("NEXUSMODS_API_KEY", "NEXUSMODS_FILE_ID", "NEXUSMODS_MOD_ID"):
               if not os.environ.get(name, "").strip():
                   raise SystemExit(f"Configure {name} in this repository before publishing.")
-          file_id = urllib.parse.quote(os.environ["NEXUSMODS_FILE_ID"].strip(), safe="")
-          request = urllib.request.Request(
-              f"https://api.nexusmods.com/v3/mod-files/{file_id}/versions",
-              headers={"apikey": os.environ["NEXUSMODS_API_KEY"], "Accept": "application/json"},
-          )
-          with urllib.request.urlopen(request, timeout=30) as response:
-              versions = json.load(response)["data"]["versions"]
+          sync = runpy.run_path(".github/scripts/sync-nexus-description.py")
+          client = sync["make_client"](os.environ)
+          versions = client.request("GET", f"/v3/mod-files/{sync['FILE_ID']}/versions")["data"]["versions"]
           if any(item["version"] == os.environ["RELEASE_VERSION"] for item in versions):
               raise SystemExit("This version already exists on Nexus. Inspect it instead of creating a duplicate.")
           PY

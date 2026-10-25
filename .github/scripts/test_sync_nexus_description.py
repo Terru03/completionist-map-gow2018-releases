@@ -136,8 +136,10 @@ class DescriptionSyncTests(unittest.TestCase):
 
     def test_redirect_never_receives_api_key(self):
         self.state['redirect'] = True
-        with self.assertRaisesRegex(RuntimeError, '302'):
-            self.run_sync()
+        for operation in (self.run_sync, lambda: self.sync.make_client(self.environment).request(
+                'GET', '/v3/mod-files/8108382/versions')):
+            with self.assertRaisesRegex(RuntimeError, '302'):
+                operation()
         self.assertEqual(self.state['sink'], 0)
 
     def test_failed_auth_does_not_expose_key(self):
