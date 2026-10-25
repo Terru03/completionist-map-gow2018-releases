@@ -24,7 +24,7 @@ The personal key must belong to the mod author or an authorized mod-page team me
 
 ## First run and existing releases
 
-Use **Actions Ã¢â€ â€™ Publish release to Nexus Mods Ã¢â€ â€™ Run workflow** with `release_tag=v1.0.8` and `dry_run=true` first. This validates the published package without requiring Nexus credentials or uploading a file.
+Use **Actions ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Publish release to Nexus Mods ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Run workflow** with `release_tag=v1.0.8` and `dry_run=true` first. This validates the published package without requiring Nexus credentials or uploading a file.
 
 For an actual upload, set `dry_run=false`. The workflow checks Nexus's existing file versions before uploading and stops if the requested version already exists. If requested version already exists, inspect that file rather than creating duplicate upload. The guard also prevents a second upload if the first run created the file but subsequently failed while adding the changelog.
 
@@ -90,3 +90,18 @@ D3D11/ReShade probe passed. Full GoW/preset and Proton migration unverified.
 Release publication triggers existing workflow; page descriptions saved from
 `docs/nexus-description-v1.0.9.*.txt`. Record upload/version ID and actual scan
 state after workflow. No review approval inferred from upload success.
+
+### v1.0.9 upload and Git page sync result
+
+Automatic release-triggered [file upload](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/40137929833)
+passed. API version `17622250816380`, legacy file
+[892](https://www.nexusmods.com/godofwar/mods/396?tab=files&version_history=892).
+
+Official page-edit API now syncs both versioned Git descriptions too. Main-branch
+[description-only run](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/40168671689)
+passed, verifying v1.0.9 summary/full text with no extra upload/changelog.
+Thirteen loopback HTTP/unit/CLI publisher checks passed. Exact v1 newline display
+encoding checked; keys redacted before diagnostic truncation.
+
+Current scanner/public download clearance unverified independently. Upload/page
+sync success does not establish malware-review approval. No support mail sent.
