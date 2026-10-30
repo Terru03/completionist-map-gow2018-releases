@@ -1,0 +1,1 @@
+Every collectible on the map and compass: 551 markers across 16 families. v1.1.0 marks the nearest uncollected item of each family nearby, shows 10 compass markers with distances and one in-world icon per family, fixes 36 positions and makes install/uninstall safer. No save edits.

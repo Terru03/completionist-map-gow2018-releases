@@ -105,3 +105,19 @@ encoding checked; keys redacted before diagnostic truncation.
 
 Current scanner/public download clearance unverified independently. Upload/page
 sync success does not establish malware-review approval. No support mail sent.
+
+## v1.1.0 release
+
+Nearby markers, a 10-marker compass with distances, one in-world icon per
+family, 36 corrected positions and a safer Windows install/uninstall. Stable
+ZIP: 12,799,472 bytes, SHA-256
+`595d681c4939373054676940b3e60d53c8f4008fea6e49519e2fe511be3d9501`, built from
+source tag `v1.1.0` (merge of source PR 17).
+
+196 Python/Lua/real PowerShell/package checks (1 skipped) and 10/10 native
+CTests passed. Release publication triggers the existing workflow; page texts
+come from `docs/nexus-description-v1.1.0.*.txt`. The Nexus file description
+now says to extract the ZIP outside the game folder. Record the upload/version
+ID and the actual scan state after the workflow; no review approval is
+inferred from upload success.
+

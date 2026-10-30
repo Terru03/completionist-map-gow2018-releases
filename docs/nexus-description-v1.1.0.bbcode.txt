@@ -1,0 +1,50 @@
+[size=6][b]Completionist Map v1.1.0[/b][/size]
+
+Every collectible on the in-game World Map and Compass: 551 markers across 16 families, with custom icons, the game's own map filters and completion-aware tracking. Collected items drop off the map. The mod only reads your progress; it never edits your save.
+
+Questions, problems or ideas? Join the Discord: [url=https://discord.gg/URDc8uZmB]https://discord.gg/URDc8uZmB[/url]
+
+[size=4][b]New in v1.1.0[/b][/size]
+[list]
+[*][b]Nearby markers:[/b] the nearest uncollected collectible of each family gets its compass marker and in-world icon, all families at once. [Up Arrow] on the world map cycles 50 m (start), 100 m, Off, 25 m.
+[*][b]Compass:[/b] 10 side markers instead of 6, a distance on every marker on the bar, and a tracked favour no longer drops off the compass.
+[*][b]One in-world icon per family[/b] instead of the game's one in total.
+[*][b]36 corrected positions:[/b] items that sat up to 186 m off (beach maze, Tyr's Vault Nornir puzzles and others) now have their pin on the item.
+[*][b]Map:[/b] collected items update at once, Raven pins follow the map filter, and tracked markers show their in-world icon from 100 m (adjustable).
+[*][b]Install / uninstall:[/b] backups hold only the game's own files, Install.bat refuses to run from inside the game folder, Uninstall.bat works from any v1.1.0+ package and removes every Completionist file, and the main log is on by default for problem reports.
+[/list]
+
+[size=4][b]Collectibles and controls[/b][/size]
+Odin's Ravens; Nornir Chests, Seals, Bells and Mechanisms; Legendary, Cipher, Wooden and Red/Coffin Chests; Artefacts; Jotnar Shrines; Lore Markers and Scrolls; Realm Tears; Treasure Maps and Dig Sites.
+
+Use the game's map filters to choose families. [Down Arrow] on the map hides or shows all Completionist markers; [Up Arrow] changes the nearby range. Hover a pin and press [Enter] / [E] to add, replace or remove it as a compass target. Valkyries, gateways and shops keep the game's own markers; no duplicates.
+
+[size=4][b]Windows install / update[/b][/size]
+[list=1]
+[*]Close God of War.
+[*]Extract CompletionistMap-v1.1.0.zip into its own folder [b]outside[/b] the game folder (for example Downloads\CompletionistMap-v1.1.0). Do not extract it into the game folder.
+[*]Run Install.bat from that folder. Select the game folder if asked; allow the administrator prompt if it appears.
+[*]Start the game and open the map. No new save needed.
+[/list]
+Updating: run the new Install.bat and keep the completionist_backup folder in the game folder. If you ever extracted the mod into the game folder or copied its files in by hand, first use Steam's Verify integrity of game files. The bundled GoW Script Loader is installed if missing; your existing loader settings are kept. ReShade on dxgi.dll keeps working through d3d11.dll.
+
+[size=4][b]Game version[/b][/size]
+The 10-marker compass, distances on the bar and one icon per family need game version 1.0.13 (GoW.exe 1.0.475.7534), from any store, DRM-free copies included. dxgi.dll checks the game code and data it uses byte for byte before changing anything; on another version these features stay off and the game keeps its own behaviour. Everything else works on any version.
+
+[size=4][b]Logs and problems[/b][/size]
+The main log, mods/loader_log.txt, is on by default and starts empty at every game start, so copy it before starting the game again. The native log is mods/completionist-map/native/raven-native-bridge.log. To turn the main log off, set FileLogLevel = "off" in mods/loader_config.toml. Send the logs, the area and what you did on the [url=https://discord.gg/URDc8uZmB]Discord[/url]. The README in the ZIP explains every feature and setting.
+
+[size=4][b]Uninstall[/b][/size]
+Windows: run Uninstall.bat from any extracted v1.1.0 or later package. It restores the backed-up game files and removes every Completionist file; your saves and settings.json are kept.
+
+[size=4][b]Steam Deck / Linux[/b][/size]
+Extract the ZIP in Desktop Mode, then run:
+[code]bash Install-SteamDeck.sh "/path/to/GodOfWar"[/code]
+Steam Launch Options:
+[code]WINEDLLOVERRIDES="dxgi,version=n,b" %command%[/code]
+These scripts copy files without the Windows checks and keep the game's 20 m in-world icon distance; they are not tested. Uninstall with bash Uninstall-SteamDeck.sh "/path/to/GodOfWar".
+
+[size=4][b]Known limits[/b][/size]
+Odin's Ravens fly about and are marked where they perch or start. The Lake of Nine elevator Jotnar shrine is marked where its elevator stops at the top. Mods that change the same game archives or map data may need a merged patch. No antivirus clearance is claimed; check this file's scan state.
+
+Author: Terru03. Script Loader: Nukem9.

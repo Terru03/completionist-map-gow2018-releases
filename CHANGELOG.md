@@ -2,6 +2,42 @@
 
 For the exhaustive numbered prototype list, including superseded and failed test builds, see [`docs/VERSION_HISTORY.md`](docs/VERSION_HISTORY.md).
 
+## v1.1.0 - Nearby markers, bigger compass and safer install/uninstall (2026-10-30)
+
+- Nearby markers: the nearest uncollected collectible of each family gets its
+  compass marker and in-world icon, all families at once. `[Up Arrow]` on the
+  world map cycles 50 m (start), 100 m, Off, 25 m; within 25 m the others show
+  the game's white hint dot. Ravens and Nornir pieces count once the map would
+  pin them; a killed Raven or opened Nornir chest drops its marker at once.
+- Opened chests and other collected items update the map at once (each item's
+  own state is passed to the map).
+- `dxgi.dll` draws one in-world icon per family instead of the game's one
+  (game version 1.0.13 from any store, DRM-free included: the game code and
+  data it uses are checked byte for byte instead of the file's hash;
+  `multi-icon.off` turns it off).
+- Compass: 10 side markers instead of 6 (`compass-cap.off` keeps 6), one place
+  always free for a marker you track, a distance on every marker on the bar,
+  and a tracked favour the game leaves off (after a checkpoint load) is put
+  back after about 4 s, with a 30 s wait if the game removes it again.
+- 36 collectibles placed up to 186 m off (items in sub-groups of exported
+  level prefabs) now sit on the item; story-moved items where they end up,
+  elevator items at the top.
+- Raven pins follow the selected map category; the `[Down Arrow]` Hide/Show
+  prompt updates on every press.
+- Tracked Completionist targets show their in-world icon from 100 m (game 20 m),
+  adjustable globally and per family in `mods/completionist-map/settings.json`
+  (Windows installer).
+- Windows install/uninstall: `Install.bat` stops when run from inside the game
+  folder; only the game's own files are backed up, Completionist copies in an
+  old backup are dropped and the game files needing Steam's Verify are named;
+  `Uninstall.bat` reads the install record in `completionist_backup` and
+  removes every Completionist file by hash.
+- Logs: `mods/loader_log.txt` is on by default (set once; a player's later
+  `FileLogLevel = "off"` is kept; Uninstall turns it back off).
+  `raven-native-bridge.log` rotates to `.previous.log` at 4 MB.
+- README rewritten as a user guide with log and Discord support instructions.
+- Steam Deck / Linux scripts unchanged (game's 20 m, no Windows checks).
+
 ## v1.0.9 - Windows mod compatibility and safe install/remove (2026-10-25)
 
 - Preserve existing ReShade through D3D11; no ReShade/preset/shader bundling.

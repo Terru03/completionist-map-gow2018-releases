@@ -1,92 +1,90 @@
 # Completionist Map for God of War (2018)
 
-Current release: **[v1.0.9](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.0.9)** — Windows mod compatibility and safe install/remove.
-[Download ZIP](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.0.9/CompletionistMap-v1.0.9.zip) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files)
+Current release: **[v1.1.0](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.1.0)** — nearby markers, a bigger compass and safer install/uninstall.
+[Download ZIP](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.1.0/CompletionistMap-v1.1.0.zip) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files) · [Discord](https://discord.gg/URDc8uZmB)
 
-551 collectible marker records across 16 families, shown on in-game map and
-compass with custom icons and native category filters. Completion tracking reads
-game state; no save-file or progression edits.
-
-## Changes in v1.0.9
-
-- Windows installer keeps existing ReShade through `d3d11.dll`; preset and
-  shader files kept. ReShade and presets not bundled or required.
-- Preserve shared Script Loader options; enable Lua scripts only when needed.
-- Stop unsafe DLL and Lua/native/art overlaps before payload writes.
-- On remove, keep later mods' file changes, loader options and boot entries;
-  retain original backup when safe restore cannot be proved.
-- Keep all 21 v1.0.8 game payloads, native DLLs, save-load Raven/chest fixes and
-  bundled Script Loader. One-click install retained.
-
-Nexus upload uses release workflow. Public availability depends on current
-Nexus file review. No antivirus clearance claimed.
-
-## Install or update
-
-1. Close God of War. Fully extract `CompletionistMap-v1.0.9.zip`.
-2. Keep existing `completionist_backup` folder when updating.
-3. Windows: run `Install.bat`. Select game folder if asked; allow UAC if needed.
-4. Launch game and open map. No save conversion needed.
-
-Installer verifies payload hashes, backs up stock files, installs missing
-`version.dll` and `mods/loader_config.toml`, then registers marker artwork.
-Existing Script Loader and user options preserved. Lua enabled when needed.
-
-Steam Deck / Linux, in Desktop Mode:
-
-```sh
-bash Install-SteamDeck.sh "/path/to/GodOfWar"
-```
-
-Steam Launch Options:
-
-```text
-WINEDLLOVERRIDES="dxgi,version=n,b" %command%
-```
-
-Manual and mod-manager installs: copy `dxgi.dll`, `exec/` and `mods/` beside
-`GoW.exe`; copy `prerequisites/version.dll` if missing. Keep `mods/loader_config.toml`
-with `[Lua] LoadScripts = true`. Back up `exec/boot-options.json`, then add
-`../../patch/pc_le/completionist_v105_family_art` to existing `patch-texpacks`
-array. Keep other entries and stock-file backups.
-
-## Use
-
-- Open world map normally. Use native filters to choose marker families.
-- Hover custom pin; press `[Enter]` / `[E]` to add, replace or remove compass target.
-- Press `[Down Arrow]` in map to show/hide custom markers.
-- Native Valkyries, gateways and shops kept; no duplicate custom pins.
-- Unknown Raven pins stay hidden. Prior Raven display may remain while matching
-  load capture waits. NG and NG+ use same current-save path.
+551 collectible markers across 16 families on the in-game map and compass,
+with custom icons and the game's own map filters. Completion tracking reads
+your progress; the mod never edits your save.
 
 Families: Odin's Ravens; Nornir Chests, Seals, Bells and Mechanisms; Legendary,
 Cipher, Wooden and Red/Coffin Chests; Artefacts; Jötnar Shrines; Lore Markers and
 Scrolls; Realm Tears; Treasure Maps and Dig Sites.
 
-## Compatibility and support
+## What's new in v1.1.0
 
-Windows automatic ReShade handling uses existing installed DLL only. If
-ReShade setup/update replaces `dxgi.dll`, rerun `Install.bat`. Unknown DXGI,
-occupied D3D11 and overlapping Lua/native/art files stop install safely.
-Shared game archives/map assets still need mod-specific merged patches.
-Arbitrary runtime compatibility cannot be proved by installer checks.
+- **Nearby markers:** the nearest uncollected item of each family gets a
+  compass marker and in-world icon, all families at once. `[Up Arrow]` on the
+  world map cycles 50 m / 100 m / Off / 25 m.
+- **Compass:** 10 side markers instead of 6, a distance on every marker on the
+  bar, and a tracked favour no longer drops off the compass.
+- **One in-world icon per family** instead of one in total.
+- **36 corrected positions:** items that sat up to 186 m off their real spot
+  (beach maze, Tyr's Vault Nornir puzzles and others) now have their pin on
+  the item.
+- **Map:** collected items update at once; Raven pins follow the map filter;
+  the `[Down Arrow]` prompt updates on every press; tracked icons from 100 m
+  (adjustable).
+- **Install and uninstall:** backups hold only the game's own files,
+  `Install.bat` refuses to run from inside the game folder, `Uninstall.bat`
+  works from any v1.1.0+ package and removes every Completionist file, and the
+  main log is on by default for problem reports.
 
-Real ReShade 6.8.0 checked in isolated Windows install/remove tests; hardware
-D3D11 probe confirmed runtime creation. Full GoW + GOW REGRADE session untested.
-Game hash checks non-blocking; this does not prove every game build/device works.
-Steam Deck/Linux scripts retain prior behavior; new safeguards and automatic
-ReShade repair apply only to Windows installer. Back up existing mods on Proton
-or manual installs. Affected player NG/NG+ saves unavailable for live checks.
+Full list: [CHANGELOG](CHANGELOG.md) ·
+[release notes and verification](releases/v1.1.0.md).
 
-For faults: include game build, Windows/Proton version, NG/NG+ state, exact area,
-chest type and steps. Keep
-`mods/completionist-map/native/raven-native-bridge.log`.
+## Install or update (Windows)
+
+1. Close God of War.
+2. Extract `CompletionistMap-v1.1.0.zip` into its own folder **outside** the
+   game folder (for example `Downloads\CompletionistMap-v1.1.0`). Do not
+   extract it into the game folder.
+3. Run `Install.bat` from that folder. Select the game folder if asked; allow
+   the administrator prompt if it appears.
+4. Start the game and open the map. No new save needed.
+
+Updating: run the new package's `Install.bat`; keep the `completionist_backup`
+folder in the game folder. If you ever extracted the mod into the game folder
+or copied its files in by hand, first use Steam's *Verify integrity of game
+files*.
+
+The bundled GoW Script Loader (`version.dll`) is installed if missing; an
+existing one and your loader settings are kept. ReShade on `dxgi.dll` keeps
+working through `d3d11.dll`. Files another mod owns stop the install before any
+game file changes.
+
+## Use
+
+- World map: use the game's filters to choose families. `[Down Arrow]`
+  hides/shows all Completionist markers; `[Up Arrow]` changes the nearby range.
+- Hover a pin and press `[Enter]` / `[E]` to add, replace or remove it as a
+  compass target.
+- Valkyries, gateways and shops keep the game's own markers; no duplicates.
+- Settings (in-world icon distance per family, turning the bigger compass or
+  the extra icons off) are explained in the README inside the ZIP.
+
+## Logs and problems
+
+The main log, `mods/loader_log.txt`, is on by default and starts empty at every
+game start, so copy it before starting the game again. The native log is
+`mods/completionist-map/native/raven-native-bridge.log` (with
+`raven-native-bridge.previous.log`; the two stay at about 8 MB). To turn the
+main log off, set `FileLogLevel = "off"` in `mods/loader_config.toml`; later
+installs keep that.
+
+Send the logs, the area and what you did on the
+[Discord](https://discord.gg/URDc8uZmB).
 
 ## Remove
 
-Windows: `Uninstall.bat`. Steam Deck/Linux:
-`bash Uninstall-SteamDeck.sh "/path/to/GodOfWar"`.
-Manual/mod-manager installs: restore stock files and original boot JSON from
-backup, or use game launcher's file verification. Keep saves intact.
+Windows: run `Uninstall.bat` from any extracted v1.1.0 or later package. It
+restores the backed-up game files and removes every Completionist file; your
+saves and `settings.json` are kept.
 
-[Release notes and verification](releases/v1.0.9.md).
+Steam Deck / Linux (Desktop Mode): `bash Install-SteamDeck.sh "/path/to/GodOfWar"`
+and `bash Uninstall-SteamDeck.sh "/path/to/GodOfWar"`, with Steam Launch Options
+`WINEDLLOVERRIDES="dxgi,version=n,b" %command%`. These scripts copy files only,
+without the Windows checks, and are not tested.
+
+Tested in Windows game sessions on Steam. No antivirus clearance is claimed;
+check the Nexus file's current review state.

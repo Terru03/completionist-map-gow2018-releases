@@ -1,0 +1,130 @@
+{
+  "version": "1.1.0",
+  "filename": "CompletionistMap-v1.1.0.zip",
+  "size": 12799472,
+  "sha256": "595d681c4939373054676940b3e60d53c8f4008fea6e49519e2fe511be3d9501",
+  "source_sha256": "e0a7f78f773860dd5e129c1ef83222969eb011fdb826f5361994c9f325249913",
+  "source_commit": "f43b15548c56a4937fa1b009356cf5aca42fd77e",
+  "source_tree_clean": true,
+  "changed_game_payloads": [
+    "dxgi.dll",
+    "exec/dc/pc_le/mapcoords.dcb",
+    "mods/completionist-map/native/raven-native-bridge-manifest.json",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/interactive/triptychs/interact_triptych.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_chest_runic.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_chest_standard.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_artifact.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_dirtdig.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_pocketrift.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/precisionchallenge.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/soninteracts/langcheckruneread.lua",
+    "mods/lua/gameart/scripts/levels/gameplaymodules/soninteracts/sonlanguagepickup.lua",
+    "mods/lua/gameart/ui/scripts/inworldmenu/mapmenu.lua"
+  ],
+  "dxgi": {
+    "sha256": "1ecda9d1e88b61582aa128fed3c86feb600e6219581487a27ed8c0ed2a877920",
+    "size": 244736,
+    "build": "multi-icon",
+    "replaces_sha256": "fe427a11d190dbd7c39377566da6d54487f209f2b5c1126d1656ff2a11321e1a",
+    "bridge_log_max_bytes": 4194304,
+    "bridge_log_rotation": "game start and during play",
+    "kill_switch": "mods/completionist-map/native/multi-icon.off",
+    "compass_side_cap": 10,
+    "compass_cap_kill_switch": "mods/completionist-map/native/compass-cap.off",
+    "native_game_version": "1.0.13 (GoW-4757534), any store, byte-checked",
+    "multi_icon_exe_sha256": [
+      "caebcb027980d7eac9203d190f9ee649eebc549f8defce138e2114dc91f40452",
+      "a3b83b8747d44e1162f5abf951c9901a5e0aced9b9ff7df47c931849b5eaf4f7"
+    ]
+  },
+  "scripts_tested_as": "1.1.0-proximity-probe23",
+  "live_game_test": "scripts: probe 23 with traces and release build 1 (2026-10-29); dxgi.dll log limit at game start: release build 1 session; compass cap 10 and free side slot: release builds 5-7 sessions; label hand-over and log limit during play: offline only; marker positions: 110 of 111 surveyed Midgard items within 0.5 m (survey 6, docs/research/v110-marker-survey.md), the rest offline; tracked favour restore: build 7 sessions; favour retry after cooldown: offline only; tester GoW.exe a3b83b87 (1.0.475.7534): in game; byte-checked acceptance of other 1.0.13 copies: offline only; installer stock-only backups, install record and uninstall of all versions' files: offline only (temporary folders)",
+  "release": true,
+  "published": false,
+  "files": {
+    "dxgi.dll": {
+      "size": 244736,
+      "sha256": "1ecda9d1e88b61582aa128fed3c86feb600e6219581487a27ed8c0ed2a877920"
+    },
+    "mods/loader_config.toml": {
+      "size": 2227,
+      "sha256": "63bf253df21ebe24d6fe52e2baadaa2105c73bb7cf42ca466e5b410090018584"
+    },
+    "exec/dc/pc_le/mapcoords.dcb": {
+      "size": 160768,
+      "sha256": "5117caed652ec9120a5da3d7531001ab5254580980c4d0ea0476c0d0e9f0a9c2"
+    },
+    "exec/dc/pc_le/mapmaster.dcb": {
+      "size": 208368,
+      "sha256": "88cd527582efe5d708d465e6593921e92164831b9b2d34bd36c5b47aa0ec920d"
+    },
+    "exec/dc/pc_le/wad_r_perm.dcb": {
+      "size": 5584496,
+      "sha256": "217048e876014869608f873ddb02550d9e29b3d3dc66427ad6a41c0649ec6841"
+    },
+    "exec/dc/pc_le/wad_r_ui.dcb": {
+      "size": 41552,
+      "sha256": "9a22b36bb09167f967ab708471fab253b1292ed733dc1347a41f02e802c102c6"
+    },
+    "exec/patch/pc_le/completionist_v105_family_art.texpack": {
+      "size": 2061424,
+      "sha256": "eafeb31882ceff41dc50b1d6cd3057fb57f5e6a83585a9992b6044f606603485"
+    },
+    "exec/patch/pc_le/completionist_v105_family_art.texpack.toc": {
+      "size": 1744,
+      "sha256": "31a97b87a27623a5b1b023113afc288b5e435a8ecca2a372d1da69e18f8f28f4"
+    },
+    "exec/wad/pc_le/r_ui.wad": {
+      "size": 50406128,
+      "sha256": "44866aaa861a62dd4d4aacad5dd39881728e055925d6113e26f2dfaa03143204"
+    },
+    "mods/completionist-map/native/collectible-base-dxgi.dll": {
+      "size": 396800,
+      "sha256": "2ce810e0f969d44bedb944db375a715c7eadd26e96830af924e5a8a50aaa668a"
+    },
+    "mods/completionist-map/native/raven-native-bridge-manifest.json": {
+      "size": 549,
+      "sha256": "5fd492ebd14742d2e38985169b3d2b13c3b27770c8257ab963ebc33cb1725f0f"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/interactive/triptychs/interact_triptych.lua": {
+      "size": 31243,
+      "sha256": "930b0d564fe0fe4fb1a2bd36142cd6b6e1803e94b6ad95564db229dab6ea9b5f"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_chest_runic.lua": {
+      "size": 43117,
+      "sha256": "4b0609bd90eecfcef910accee22fd69af7e5cd897caa6a4338e19ff424b4698e"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_chest_standard.lua": {
+      "size": 97585,
+      "sha256": "a7c34c46676d491d5dc63c1a4cb783671a0471d31f5c6958f7013927423f09ee"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_artifact.lua": {
+      "size": 38049,
+      "sha256": "0d6789a9e29ab89c0fab59834ef7d58ae2c0102872c5ceabb08c626cf9dbcfb7"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_dirtdig.lua": {
+      "size": 28324,
+      "sha256": "1f751e3aae38cb07b9886ba383a3b60ee1812e9b4af997cdd7b2eaa1bc20279e"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/interact_loot_pocketrift.lua": {
+      "size": 37854,
+      "sha256": "cbfd01fc5289694cc1bba2c70a4af56e20f44d1f36d781b996cf45d95db44b7e"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/progression/precisionchallenge.lua": {
+      "size": 47430,
+      "sha256": "682cebe2cf4fbb32be09c0bec2109686d36fab45641973765f879ae9fda61900"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/soninteracts/langcheckruneread.lua": {
+      "size": 34691,
+      "sha256": "d3cca474de7a35c6c104e01d5c58864550859913fcfe4291880d14afdd23d45d"
+    },
+    "mods/lua/gameart/scripts/levels/gameplaymodules/soninteracts/sonlanguagepickup.lua": {
+      "size": 28187,
+      "sha256": "1f3f79af0cde63d1268d9df2c611df702401151b42e71ae1d181bada38048ca5"
+    },
+    "mods/lua/gameart/ui/scripts/inworldmenu/mapmenu.lua": {
+      "size": 808454,
+      "sha256": "3184ed516f53bfde2ab35d3414c766af58042c6fdfabc5a61b01ee41694bb49f"
+    }
+  }
+}

@@ -5,3 +5,4 @@ b7f1f484a88996daa98cce0e549c2c83b9482979f2f19c97a395d8532a3cfbb7  CompletionistM
 a0a47f63ad8fd284570fce05f076d33138c7841fdd36f28a3cde9b9d24459c8b  CompletionistMap-v1.0.5.zip
 4bd4abefdd7599ae38aa284bc57e31c86b2ce5d5f0af22623509f838c819f755  releases/v1.0.6/CompletionistMap-v1.0.6.zip
 583fc1221dc43a9ddcd685451ea336623f2a9a8b50c4c6d7387cff7f709e4117  releases/v1.0.7/CompletionistMap-v1.0.7.zip
+595d681c4939373054676940b3e60d53c8f4008fea6e49519e2fe511be3d9501  releases/v1.1.0/CompletionistMap-v1.1.0.zip

@@ -1,0 +1,70 @@
+Completionist Map v1.1.0
+
+Nearby markers
+- For every family, the nearest collectible the map does not show as collected
+  gets its family's compass marker and in-world icon, all families at once.
+  [Up Arrow] on the world map cycles the range: 50 m (start), 100 m, Off, 25 m.
+  Within 25 m the others show the game's white hint dot.
+- Odin's Ravens and Nornir chests and puzzle pieces are included once the map
+  would show their pin. A killed Raven or opened Nornir chest drops its marker
+  at once, without opening the map.
+- Opened chests and other collected items now update the map at once.
+- One in-world icon per family instead of the game's one in total (game
+  version 1.0.13; mods/completionist-map/native/multi-icon.off turns the extra
+  icons off).
+
+Compass
+- Up to 10 side markers instead of 6 (game version 1.0.13;
+  mods/completionist-map/native/compass-cap.off keeps 6). Nearby markers never
+  take the place of a tracked favour or other game marker: one place is always
+  kept free.
+- Every marker on the bar shows its distance; markers past the game's 6
+  distance labels are drawn in the world only, and a tracked favour always
+  gets a label.
+- A tracked favour no longer stays off the compass (for example after a
+  checkpoint load): if the game does not show it again within about 4 seconds,
+  the mod does, only while you track it. If the game removes it again at once,
+  the mod waits 30 seconds before trying again.
+
+Map
+- 36 collectibles sat off their real spot (up to 186 m), such as the
+  artefact, cipher chest and dig site in the beach maze and the Nornir chest
+  and seals in Tyr's Vault. Their map pins, compass markers and in-world icons
+  now sit on the item. Items the story moves are placed where they end up (the
+  ship head on Tyr's bridge, two rune lore markers in Alfheim); items on
+  elevators where the elevator stops at the top. Ravens are not moved.
+- Odin's Raven pins follow the selected map filter: they show in Show All,
+  Completionist and Ravens, and other family filters remove them.
+- The [Down Arrow] Hide/Show Markers prompt updates on every key press.
+- Tracked collectibles show their floating in-world icon from 100 m instead of
+  the game's 20 m (Windows installer). Adjustable per family in
+  mods/completionist-map/settings.json (see settings.example.json and the
+  README); only the mod's own markers change.
+
+Install, uninstall and logs (Windows)
+- Install.bat stops, changing nothing, when run from inside the game folder:
+  extract the ZIP to its own folder outside the game folder.
+- Only the game's own files are backed up. A game file that already holds a
+  Completionist file (an earlier install, or the ZIP extracted into the game
+  folder) is not backed up; Install.bat and Uninstall.bat name such files and
+  point to Steam's Verify integrity of game files.
+- Uninstall.bat reads what was installed from completionist_backup, so it
+  works from any v1.1.0 or later package, and removes every Completionist
+  file, including Lua scripts an earlier version left behind.
+- The main log (mods/loader_log.txt) is on by default, so a problem can be
+  reported with it; set FileLogLevel = "off" in mods/loader_config.toml to turn
+  it off, and later installs keep that. The native log
+  (raven-native-bridge.log) now stays small: at 4 MB it becomes
+  raven-native-bridge.previous.log, so the two stay at about 8 MB.
+- The README explains every feature, where the logs are and how to report a
+  problem. Discord: https://discord.gg/URDc8uZmB
+
+The compass and in-world icon changes run on game version 1.0.13 (GoW.exe
+1.0.475.7534) from any store, DRM-free copies included: dxgi.dll checks the
+game code and data it uses byte for byte instead of the file's hash. Other
+game versions keep the game's own behaviour.
+
+Unchanged: art, the Raven bridge DLL, the bundled Script Loader, the ReShade and
+shared-config safeguards, the save-load Raven and chest fixes, and read-only
+completion tracking (no save edits). Steam Deck / Linux scripts keep the game's
+20 m in-world icon distance and do not have the Windows install checks.

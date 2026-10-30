@@ -63,7 +63,8 @@ def verify_release(tag, directory):
         "display_name": f"Completionist Map {tag}",
         "description": (
             f"Completionist Map {tag}. Complete package with Windows and Steam Deck installers. "
-            "Close God of War, extract the ZIP, run Install.bat, and preserve completionist_backup. "
+            "Close God of War, extract the ZIP to its own folder outside the game folder, run Install.bat "
+            "from there, and keep completionist_backup. "
             "Release notes on GitHub."
         ),
         "changelog": changelog,
