@@ -2,7 +2,7 @@
 
 Every collectible on the in-game World Map and Compass: 551 markers across 16 families, with custom icons, the game's own map filters and completion-aware tracking. Collected items drop off the map. The mod only reads your progress; it never edits your save.
 
-Questions, problems or ideas? Join the Discord: [url=https://discord.gg/URDc8uZmB]https://discord.gg/URDc8uZmB[/url]
+Questions, problems or ideas? Join the Discord: https://discord.gg/URDc8uZmB
 
 [size=4][b]New in v1.1.0[/b][/size]
 [list]
@@ -32,7 +32,7 @@ Updating: run the new Install.bat and keep the completionist_backup folder in th
 The 10-marker compass, distances on the bar and one icon per family need game version 1.0.13 (GoW.exe 1.0.475.7534), from any store, DRM-free copies included. dxgi.dll checks the game code and data it uses byte for byte before changing anything; on another version these features stay off and the game keeps its own behaviour. Everything else works on any version.
 
 [size=4][b]Logs and problems[/b][/size]
-The main log, mods/loader_log.txt, is on by default and starts empty at every game start, so copy it before starting the game again. The native log is mods/completionist-map/native/raven-native-bridge.log. To turn the main log off, set FileLogLevel = "off" in mods/loader_config.toml. Send the logs, the area and what you did on the [url=https://discord.gg/URDc8uZmB]Discord[/url]. The README in the ZIP explains every feature and setting.
+The main log, mods/loader_log.txt, is on by default and starts empty at every game start, so copy it before starting the game again. The native log is mods/completionist-map/native/raven-native-bridge.log. To turn the main log off, set FileLogLevel = "off" in mods/loader_config.toml. Send the logs, the area and what you did on the Discord: https://discord.gg/URDc8uZmB The README in the ZIP explains every feature and setting.
 
 [size=4][b]Uninstall[/b][/size]
 Windows: run Uninstall.bat from any extracted v1.1.0 or later package. It restores the backed-up game files and removes every Completionist file; your saves and settings.json are kept.
