@@ -134,3 +134,18 @@ bridge) and 10/10 (`dxgi.dll`) passed. Release publication triggers the
 existing workflow; page texts come from `docs/nexus-description-v1.1.1.*.txt`.
 Record the upload/version ID and the actual scan state after the workflow; no
 review approval is inferred from upload success.
+
+### v1.1.1 upload and page sync result
+
+Release-triggered [run 42670764313](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/42670764313)
+verified the package and uploaded it: legacy file
+[896](https://www.nexusmods.com/godofwar/mods/396?tab=files&version_history=896),
+Main download, mod version 1.1.1. Its page-sync step and a
+[description-only run](https://github.com/Terru03/completionist-map-gow2018-releases/actions/runs/42671133495)
+failed the read-back check, which returned the v1.1.0 text (v1.1.0's runs read
+back older text the same way). The public page read on 9 November 2026 already
+showed the v1.1.1 summary and full description, so the edit applied and the
+read-back was stale.
+
+Automatic file checks quarantined the new file; the public download is blocked
+pending Nexus review. No support email sent by this release.
