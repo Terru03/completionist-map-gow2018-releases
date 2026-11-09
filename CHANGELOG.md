@@ -2,6 +2,38 @@
 
 For the exhaustive numbered prototype list, including superseded and failed test builds, see [`docs/VERSION_HISTORY.md`](docs/VERSION_HISTORY.md).
 
+## v1.1.1 - MY LIST, up to 5 tracked markers and the realm tear fix (2026-11-09)
+
+- Realm tears: an opened tear drops off the map, and only that tear. v1.1.0
+  marked every tear collected once a Realm Tear Labor tier completed and named
+  region quests that don't exist for some tears; the Raven bridge DLL now reads
+  each tear's `hasOpened` from the save (identity in
+  `catalogue/realm-tear-authority.json` in the source repository,
+  read only as before), and the region quests come from the level data.
+- MY LIST: a map filter page showing only the kinds you pick, the 14 family
+  pages and the game's shops, gateways, docks, entrances, fights, Valkyries,
+  quests and other locations. `[Down Arrow]` on it opens an ON/OFF list in the
+  map's fast-travel list; the realm tabs are put away while it is open. Nearby
+  follows the list while the map was left on MY LIST.
+- Up to 5 tracked markers: `[Triangle]` adds, `[Cross]` replaces the marker set
+  with `[Cross]` (or the oldest after a load) or removes the one under the
+  cursor, and `[Triangle]` Clear Compass removes them all (favours stay). At
+  most 2 of one compass class at once: the game has 2 compass HUD icons per
+  class and crashes (0x6C101F) showing a third. 5 tracked plus a favour fill
+  the bar's 6 distance labels. While anything is tracked, nearby markers stay
+  off the bar (`game.Compass.SetMarkerVisible`) and leave tracked families.
+- MY LIST, the page the map was left on, the nearby range and the tracked
+  markers are kept in `mods/completionist-map/map-preferences.txt`, through a
+  loopback socket in the Raven bridge DLL (Lua has no file access here).
+  Tracked markers are shown again after a load once the game has cleared the
+  compass. `Uninstall.bat` removes the file.
+- Raven pins: the Raven layer dropped its selection only when another Raven
+  was hovered and rewrote the last pressed Raven's prompt every frame, so
+  `[Cross]` on another marker acted on that Raven and the prompt went stale. The
+  selection follows the cursor and the prompt is written only on that Raven.
+- `dxgi.dll` is rebuilt to pin the new Raven bridge DLL; `Install.bat` upgrades
+  a v1.1.0 install in place.
+
 ## v1.1.0 - Nearby markers, bigger compass and safer install/uninstall (2026-10-30)
 
 - Nearby markers: the nearest uncollected collectible of each family gets its

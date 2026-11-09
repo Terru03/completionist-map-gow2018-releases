@@ -1,0 +1,54 @@
+Completionist Map v1.1.1
+
+Realm tears
+- An opened realm tear drops off the map, and only that tear. In v1.1.0 every
+  tear left the map once a Realm Tear Labor tier was completed, even tears not
+  yet opened, and some opened tears stayed on it. The mod now reads each
+  tear's opened state from the save (read only, as before), and tears opened
+  in another area or an earlier session are known as soon as the save loads.
+
+MY LIST
+- A new map filter page that shows only the kinds of marker you pick: any of
+  the mod's families, and the game's own shops, mystic gateways, boat docks,
+  area entrances, fight locations, Valkyries, quests and other locations.
+- On MY LIST, [Down Arrow] opens an ON/OFF list of every kind ([Cross]
+  toggles, [Circle] closes). The realm tabs are put away while it is open, and
+  the filter name shows how many kinds are on.
+- While the map was last left on MY LIST, nearby markers follow it: only the
+  families on the list get one.
+
+Tracking up to 5 markers
+- With a marker tracked, hover another: [Triangle] Add to Compass 2/5 adds it
+  and keeps the others, up to 5. [Cross] Replace in Compass swaps out only the
+  marker you set with [Cross] (after a load, the one tracked longest), and
+  [Cross] on a tracked marker removes only that one.
+- [Triangle] Clear Compass removes everything you tracked: with no marker
+  under the cursor, or on a new marker when 5 are tracked. A tracked favour
+  stays. With nothing tracked, [Triangle] still opens Options.
+- Works for the mod's markers and the game's own (gateways, shops, docks and
+  the rest), mixed as you like, with at most 2 of one kind on the compass at
+  once (the game has only 2 compass icons per kind).
+- Tracked markers come back after loading a save or restarting the game, and
+  a collected one drops off by itself.
+- While anything is tracked, nearby markers are drawn in the world only, off
+  the compass bar, and a tracked family gets no nearby marker.
+
+Remembered between game sessions
+- MY LIST, whether the map was left on it, the [Up Arrow] nearby range and the
+  tracked markers, in mods/completionist-map/map-preferences.txt (written by
+  the mod's native DLL; Uninstall.bat removes it).
+
+Fixes
+- Odin's Raven pins: [Cross] and the map prompt now always act on the marker
+  under the cursor. Before, a Raven hovered earlier could stay selected, so
+  [Cross] on another marker tracked or removed that Raven, and the prompt kept
+  showing its text.
+
+Files: the map script, the Raven bridge DLL (collectible-base-dxgi.dll, now
+also reading realm tears and keeping map-preferences.txt) and dxgi.dll (which
+checks that DLL's hash) changed. Install.bat and Uninstall.bat now also
+recognise v1.1.0's files, so Install.bat upgrades a v1.1.0 install in place,
+and Uninstall.bat removes map-preferences.txt. Everything else is unchanged
+from v1.1.0: art, map data, the bundled Script Loader, the installer's
+safeguards and read-only completion tracking (no save edits). Steam Deck /
+Linux scripts are unchanged and not tested.

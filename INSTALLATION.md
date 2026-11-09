@@ -9,14 +9,14 @@ GoW Script Loader & Gameplay Tweaks 0.22 (`version.dll` and `mods/loader_config.
 Check the package SHA-256 against [SHA256SUMS.txt](SHA256SUMS.txt). In PowerShell:
 
 ```powershell
-Get-FileHash -LiteralPath '.\CompletionistMap-v1.1.0.zip' -Algorithm SHA256
+Get-FileHash -LiteralPath '.\CompletionistMap-v1.1.1.zip' -Algorithm SHA256
 ```
 
 ## One-click install (Windows)
 
 1. Close God of War.
-2. Download `CompletionistMap-v1.1.0.zip` from the [current release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.1.0).
-3. Extract it into its own folder **outside** the game folder, for example `Downloads\CompletionistMap-v1.1.0`. Do not extract it into the game folder; `Install.bat` refuses to run from there.
+2. Download `CompletionistMap-v1.1.1.zip` from the [current release](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.1.1).
+3. Extract it into its own folder **outside** the game folder, for example `Downloads\CompletionistMap-v1.1.1`. Do not extract it into the game folder; `Install.bat` refuses to run from there.
 4. Run `Install.bat` from that folder. It finds the game folder (or asks), asks for administrator rights if the folder needs them, installs the Script Loader if missing, backs up the game files it replaces to `completionist_backup`, turns the mod log on and registers the artwork.
 5. Start the game and open the map.
 
@@ -32,7 +32,7 @@ The main log, `mods/loader_log.txt`, is on by default and starts empty at every 
 
 ## Steam Deck & Linux (Proton)
 
-1. Extract `CompletionistMap-v1.1.0.zip` in Desktop Mode.
+1. Extract `CompletionistMap-v1.1.1.zip` in Desktop Mode.
 2. Run `bash Install-SteamDeck.sh "/path/to/GodOfWar"`.
 3. In Steam Launch Options for God of War, set:
    ```text

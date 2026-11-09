@@ -1,0 +1,1 @@
+Every collectible on the map and compass: 551 markers across 16 families. v1.1.1 adds MY LIST (a map page with only the kinds you pick), tracking up to 5 markers at once, settings remembered between sessions, and fixes realm tears leaving the map before they were opened. No save edits.

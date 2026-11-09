@@ -1,7 +1,7 @@
 # Completionist Map for God of War (2018)
 
-Current release: **[v1.1.0](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.1.0)** — nearby markers, a bigger compass and safer install/uninstall.
-[Download ZIP](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.1.0/CompletionistMap-v1.1.0.zip) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files) · [Discord](https://discord.gg/URDc8uZmB)
+Current release: **[v1.1.1](https://github.com/Terru03/completionist-map-gow2018-releases/releases/tag/v1.1.1)** — MY LIST, up to 5 tracked markers and the realm tear fix.
+[Download ZIP](https://github.com/Terru03/completionist-map-gow2018-releases/releases/download/v1.1.1/CompletionistMap-v1.1.1.zip) · [Nexus Mods](https://www.nexusmods.com/godofwar/mods/396?tab=files) · [Discord](https://discord.gg/URDc8uZmB)
 
 551 collectible markers across 16 families on the in-game map and compass,
 with custom icons and the game's own map filters. Completion tracking reads
@@ -11,7 +11,23 @@ Families: Odin's Ravens; Nornir Chests, Seals, Bells and Mechanisms; Legendary,
 Cipher, Wooden and Red/Coffin Chests; Artefacts; Jötnar Shrines; Lore Markers and
 Scrolls; Realm Tears; Treasure Maps and Dig Sites.
 
-## What's new in v1.1.0
+## What's new in v1.1.1
+
+- **Realm tears:** an opened tear drops off the map, and only that tear (in
+  v1.1.0 every tear left the map once a Realm Tear Labor tier was completed).
+  Each tear's opened state is read from the save.
+- **MY LIST:** a map filter page showing only the kinds of marker you pick,
+  the mod's families and the game's own markers alike. `[Down Arrow]` on MY
+  LIST opens its ON/OFF list.
+- **Track up to 5 markers:** `[Triangle]` adds another marker to the compass,
+  `[Cross]` replaces or removes one, and Clear Compass removes them all. At
+  most 2 of one kind at once. They come back after a load or restart.
+- **Remembered between sessions:** MY LIST, the nearby range and the tracked
+  markers.
+- **Raven pins:** `[Cross]` and the prompt act on the marker under the cursor,
+  never on a Raven hovered earlier.
+
+## v1.1.0
 
 - **Nearby markers:** the nearest uncollected item of each family gets a
   compass marker and in-world icon, all families at once. `[Up Arrow]` on the
@@ -31,13 +47,13 @@ Scrolls; Realm Tears; Treasure Maps and Dig Sites.
   main log is on by default for problem reports.
 
 Full list: [CHANGELOG](CHANGELOG.md) ·
-[release notes and verification](releases/v1.1.0.md).
+[release notes and verification](releases/v1.1.1.md).
 
 ## Install or update (Windows)
 
 1. Close God of War.
-2. Extract `CompletionistMap-v1.1.0.zip` into its own folder **outside** the
-   game folder (for example `Downloads\CompletionistMap-v1.1.0`). Do not
+2. Extract `CompletionistMap-v1.1.1.zip` into its own folder **outside** the
+   game folder (for example `Downloads\CompletionistMap-v1.1.1`). Do not
    extract it into the game folder.
 3. Run `Install.bat` from that folder. Select the game folder if asked; allow
    the administrator prompt if it appears.
@@ -55,10 +71,12 @@ game file changes.
 
 ## Use
 
-- World map: use the game's filters to choose families. `[Down Arrow]`
-  hides/shows all Completionist markers; `[Up Arrow]` changes the nearby range.
-- Hover a pin and press `[Enter]` / `[E]` to add, replace or remove it as a
-  compass target.
+- World map: use the game's filters to choose families, or MY LIST for your
+  own mix. `[Down Arrow]` hides/shows all Completionist markers (on MY LIST it
+  opens the list); `[Up Arrow]` changes the nearby range.
+- Hover a pin and press `[Cross]` (`[Enter]` / `[E]`) to add, replace or remove
+  it as a compass target; `[Triangle]` adds another one, up to 5, and Clear
+  Compass removes them all.
 - Valkyries, gateways and shops keep the game's own markers; no duplicates.
 - Settings (in-world icon distance per family, turning the bigger compass or
   the extra icons off) are explained in the README inside the ZIP.

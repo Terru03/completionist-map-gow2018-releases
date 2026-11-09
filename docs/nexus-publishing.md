@@ -121,3 +121,16 @@ now says to extract the ZIP outside the game folder. Record the upload/version
 ID and the actual scan state after the workflow; no review approval is
 inferred from upload success.
 
+## v1.1.1 release
+
+MY LIST, up to 5 tracked markers with at most 2 of one kind on the compass,
+settings remembered between sessions, realm tears read from the save (issue 1)
+and Raven pins that follow the cursor. Stable ZIP: 12,815,769 bytes, SHA-256
+`577f8e064e7f8b15537819c73ca552f61685177b1ed96319c31aebbbfb7196cf`, built from
+source commit `5fecbf1` (branch `release/v1.1.1`).
+
+393 Python/Lua/real PowerShell/package checks (1 skipped), CTest 13/13 (Raven
+bridge) and 10/10 (`dxgi.dll`) passed. Release publication triggers the
+existing workflow; page texts come from `docs/nexus-description-v1.1.1.*.txt`.
+Record the upload/version ID and the actual scan state after the workflow; no
+review approval is inferred from upload success.
