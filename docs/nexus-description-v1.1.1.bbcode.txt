@@ -33,7 +33,10 @@ Use the game's map filters or MY LIST to choose what you see. [Down Arrow] on th
 [*]Run Install.bat from that folder. Select the game folder if asked; allow the administrator prompt if it appears.
 [*]Start the game and open the map. No new save needed.
 [/list]
-Updating: run the new Install.bat and keep the completionist_backup folder in the game folder; it upgrades v1.1.0 in place. If you ever extracted the mod into the game folder or copied its files in by hand, first use Steam's Verify integrity of game files. The bundled GoW Script Loader is installed if missing; your existing loader settings are kept. ReShade on dxgi.dll keeps working through d3d11.dll.
+Updating: run the new Install.bat and keep the completionist_backup folder in the game folder; it upgrades v1.1.0 in place. If you ever extracted the mod into the game folder or copied its files in by hand, first use Steam's Verify integrity of game files. The bundled GoW Script Loader is installed if missing; your existing loader settings are kept.
+
+[size=4][b]ReShade + RenoDX[/b][/size]
+If Completionist Map fails to load with ReShade and RenoDX, close the game and use RHI (ReShade HDR Installer) to rename ReShade's dxgi.dll to d3d11.dll. In the folder with GoW.exe, keep Completionist Map's dxgi.dll in place. If ReShade already replaced it, run Install.bat again after the rename. Workaround reported by Keepinmind.
 
 [size=4][b]Game version[/b][/size]
 The 10-marker compass, distances on the bar and one icon per family need game version 1.0.13 (GoW.exe 1.0.475.7534), from any store, DRM-free copies included. dxgi.dll checks the game code and data it uses byte for byte before changing anything; on another version these features stay off and the game keeps its own behaviour. Everything else works on any version.
