@@ -14,6 +14,13 @@ from unittest import mock
 SCRIPT = Path(__file__).with_name('sync-nexus-description.py')
 
 
+def NEXUS_BBCODE(text):
+    """Stored form seen on the live page: list items closed with [/*], blank lines
+    dropped, <br /> after each newline and apostrophes HTML-escaped."""
+    lines = [line + '[/*]' if line.startswith('[*]') else line for line in text.split('\n') if line.strip()]
+    return '\n<br />'.join(lines).replace("'", '&#39;')
+
+
 class DescriptionDryRunTests(unittest.TestCase):
     def test_dry_run_validates_committed_page_text_without_api_key(self):
         result = subprocess.run([sys.executable, str(SCRIPT), 'v1.0.9', '--dry-run'],
@@ -72,6 +79,8 @@ class DescriptionSyncTests(unittest.TestCase):
                         self.reply(200, {'data': {'versions': state['versions']}})
                 elif self.path == '/v1/games/godofwar/mods/396.json':
                     page = dict(state['mod'])
+                    if state.get('nexus_bbcode'):
+                        page['description'] = NEXUS_BBCODE(page['description'])
                     if state['legacy_breaks']:
                         page['description'] = page['description'].replace('\n', '\n<br />')
                     self.reply(200, page)
@@ -129,6 +138,26 @@ class DescriptionSyncTests(unittest.TestCase):
         self.assertTrue(result['verified'])
         self.run_sync()
         self.assertEqual(len(self.state['patches']), 1)
+
+    def test_nexus_stored_bbcode_form_verifies_without_repeat_patch(self):
+        title = self.description.split('\n')[0]
+        self.description = title + "\n\n[list]\n[*]Kratos' map pins\n[*]Compass\n[/list]\n\nKeep existing mods.\n"
+        self.write_docs()
+        self.state['nexus_bbcode'] = True
+        try:
+            result = self.run_sync()
+        except RuntimeError as error:
+            self.fail(str(error))
+        self.assertTrue(result['verified'])
+        self.run_sync()
+        self.assertEqual(len(self.state['patches']), 1)
+
+    def test_changed_wording_still_fails_verification(self):
+        self.state['ignore_patch'] = True
+        self.state['nexus_bbcode'] = True
+        self.state['mod']['description'] = self.description.replace('Keep existing', 'Remove existing')
+        with self.assertRaisesRegex(RuntimeError, '"content_matches": false'):
+            self.run_sync()
 
     def test_missing_version_stops_before_page_change(self):
         self.state['versions'] = []

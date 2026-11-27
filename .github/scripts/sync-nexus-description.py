@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import html
 import json
 import os
 from pathlib import Path
@@ -58,12 +59,20 @@ class NexusClient:
             raise RuntimeError('Nexus API response unavailable or invalid.') from None
 
 
+def canonical_description(text):
+    """Page text as content only. Nexus stores BBCode in its own form: it adds
+    <br /> after newlines, closes list items with [/*], drops blank lines around
+    [list]/[/list] and HTML-escapes some characters. None of that changes what
+    the page says, so compare without markup whitespace, [/*], <br /> or escapes."""
+    text = html.unescape(str(text))
+    text = re.sub(r'<br\s*/?>', '', text, flags=re.IGNORECASE)
+    text = text.replace('[/*]', '')
+    return re.sub(r'\s+', '', text)
+
+
 def page_matches(page, payload):
-    # v1 adds <br /> after each newline. Keep both exact encodings.
-    description = str(page.get('description', '')).replace('\r\n', '\n').strip()
-    expected = payload['description']
     return (' '.join(str(page.get('summary', '')).split()) == payload['summary'] and
-            description in (expected, expected.replace('\n', '\n<br />')))
+            canonical_description(page.get('description', '')) == canonical_description(payload['description']))
 
 
 def make_client(environment):
@@ -89,17 +98,19 @@ def sync_description(tag, environment, root=ROOT):
         raise ValueError('Nexus page identity/version differs; no page text changed.')
     if not page_matches(page, payload):
         client.request('PATCH', f'/v3/mods/{MOD_ID}', payload)
-        for attempt in range(3):
+        # v1 can serve the previous text for a while after an edit.
+        for attempt in range(5):
             page = client.request('GET', MOD_PATH)
             if page_matches(page, payload):
                 break
-            if attempt < 2:
-                time.sleep(2)
+            if attempt < 4:
+                time.sleep(5)
         else:
             actual = str(page.get('description', '')).replace('\r\n', '\n').strip()
             facts = {'expected_sha256': sha(payload['description']), 'actual_sha256': sha(actual),
                      'expected_length': len(payload['description']), 'actual_length': len(actual),
                      'summary_matches': ' '.join(str(page.get('summary', '')).split()) == payload['summary'],
+                     'content_matches': canonical_description(actual) == canonical_description(payload['description']),
                      'description_prefix': actual.replace(client.api_key, '[redacted]')[:160]}
             raise RuntimeError('Nexus page read-back did not match committed text: ' + json.dumps(facts))
     return {'version': tag[1:], 'version_id': matches[0]['id'],
